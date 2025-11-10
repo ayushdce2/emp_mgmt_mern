@@ -6,7 +6,7 @@ function App() {
     <>
       <BrowserRouter>
       <Routes>
-        <Route path="/*" element={<EmployeeHome/>}></Route>
+        <Route path="/emp_mgmt_mern/*" element={<EmployeeHome/>}></Route>
 
       </Routes>
       
