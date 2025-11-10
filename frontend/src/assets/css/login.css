@@ -1,0 +1,52 @@
+.my_login_background{
+    background-image:url(./images/main-background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.my_login_form{
+    /* background-image:url(./components/assets/images/login-background.jpg); */
+    /* background:linear-gradient(0deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url(./components/assets/images/login-background.jpg); */
+    background-color:#d0e7f7;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    
+    padding: 1rem;
+    border-radius: 0.3rem;
+
+}
+.my_login_form input{
+    background-color: transparent;
+    height: 3rem;
+    border-bottom: 1px solid #a4cbeb;
+    padding-left: 0.3rem;
+    color:#71b1e5;
+}
+
+.my_login_form input:focus-visible{
+    outline: transparent;
+}
+
+.my_login_form input::placeholder {
+    color: #71b1e5;
+    opacity: 1; /* Firefox */
+  }
+
+.my_login_form input:focus-visible::placeholder{
+    color: transparent;
+}
+
+.my_login_form button{
+    background-color: #71b1e5;
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    color: #eee;
+}
+
+
+.my_login_form label{
+    color: #71b1e5;
+    font-weight: bold;
+    font-size: 2rem;
+}
