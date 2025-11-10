@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: heading1;
+  src: url(/font/Inter/static/Inter_18pt-Bold.ttf);
+}
+
+@font-face {
+  font-family: heading2;
+  src: url(/font/Roboto_Slab/static/RobotoSlab-Medium.ttf);
+}
+
+@font-face {
+  font-family: content1;
+  src: url(/font/Montserrat/static/Montserrat-Bold.ttf);
+}
+:root{
+--heading1:heading1;
+--heading2:heading2;
+--content1:content1;
+}
