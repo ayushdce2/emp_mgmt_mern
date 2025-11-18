@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || "http://localhost:5000/api",
-    
+    // baseURL: import.meta.env.VITE_API_URL || "https://emp-mgmt-mern.onrender.com/api" || "http://localhost:5000/api",
+    baseURL: "https://emp-mgmt-mern.onrender.com/api",
 });
 // console.log(import.meta.env.VITE_API_URL,"ayush");
 
