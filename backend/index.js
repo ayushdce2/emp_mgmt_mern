@@ -6,7 +6,7 @@ const cors = require("cors");
 
 const allowedOrigins = [
     "http://localhost:5173", // Vite dev server
-    "https://emp-mgmt-mern.vercel.app/" // Production frontend
+    "https://emp-mgmt-mern.vercel.app" // Production frontend
 ];
 
 app.use(cors({
