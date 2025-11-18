@@ -11,7 +11,7 @@ const Login = () => {
     <>
         
 
-        <div className='bg-[url("./images/main-background.jpg")] h-screen bg-cover'>
+        <div className='bg-[url("/images/main-background.jpg")] h-screen bg-cover'>
 
         <div className='h-[45vw] md:h-[15vw]'></div>
 
