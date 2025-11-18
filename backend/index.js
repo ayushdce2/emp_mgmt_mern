@@ -21,6 +21,10 @@ app.use(cors({
     },
     credentials: true
 })); //require for request from other source
+
+
+app.options("*", cors()); // Allow browser preflight requests
+
 app.use(express.json()); //require for post method request
 
 
