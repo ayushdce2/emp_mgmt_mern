@@ -1,20 +1,35 @@
+import { useState } from 'react';
+import {ToastContainer} from "react-toastify";
+import Login from './main_components/Login.jsx';
+import Signup from './main_components/Signup.jsx';
+import Home from "./pages/Home.jsx"
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import RefreshHandler from './main_components/RefreshHandler.jsx';
 import EmployeeHome from "./employee/EmployeeHome.jsx";
-import {BrowserRouter,Routes,Route} from "react-router-dom"
-import Login from "./Login.jsx";
+
 function App() {
+
+    const [isAuthenticated,setisAuthenticated]=useState(false);
+    const PrivateRoute=({element})=>{
+      return isAuthenticated ? element : <Navigate to="/login" />
+    }
 
   return (
     <>
-      <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Login/>}></Route>
-        <Route path="/employee/*" element={<EmployeeHome/>}></Route>
 
-      </Routes>
       
+      <BrowserRouter>
+      <RefreshHandler setisAuthenticated={setisAuthenticated}/>
+        <Routes>
+
+          <Route path={"/"} element={<Signup/>}></Route>
+          <Route path={"/login"} element={<Login/>}></Route>
+          <Route path={"/home"} element={<PrivateRoute element={<Home/>}/>}></Route>
+      
+        </Routes>
       </BrowserRouter>
 
-      
+      <ToastContainer/>
     </>
   )
 }
