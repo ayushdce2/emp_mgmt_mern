@@ -19,3 +19,8 @@
 --heading2:heading2;
 --content1:content1;
 }
+
+.Toastify__progress-bar--error {
+  background-color: #71b1e5;
+}
+

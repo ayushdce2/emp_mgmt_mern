@@ -28,7 +28,7 @@ const useLogin = () => {
             resJson.success == true && handleSuccess(resJson.message);
 
                     setTimeout(() => {
-                       navigate("/login");
+                       navigate("/");
                     }, 1000);
 
 

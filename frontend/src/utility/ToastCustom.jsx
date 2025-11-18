@@ -8,7 +8,7 @@ export const handleSuccess = (msg)=>{
         closeOnClick: true,
         pauseOnHover: true,
         pauseOnFocusLoss: false,
-        pauseOnBlur: true,
+        pauseOnBlur: true,    
         });
 }
 
@@ -21,5 +21,10 @@ export const handleError = (msg)=>{
         pauseOnHover: true,
         pauseOnFocusLoss: false,
         pauseOnBlur: true,
+        style: {
+            background: "#eee",
+            color: "#71b1e5",
+            border:"1px solid #71b1e5"
+        }
         });
 }

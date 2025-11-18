@@ -22,7 +22,7 @@ const useLogout = () => {
 
     handleSuccess("LoggedOut Successfully");
         setTimeout(() => {
-        navigate("/login");
+        navigate("/");
     }, 1000);
 
 

@@ -15,7 +15,6 @@ function RefreshHandler({setisAuthenticated}) {
             setisAuthenticated(true);
             if(
                 location.pathname === "/" ||
-                location.pathname === "/login" ||
                 location.pathname === "/signup"
             ){
                 navigate("/home",{replace:false});
