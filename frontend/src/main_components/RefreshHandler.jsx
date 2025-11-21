@@ -5,6 +5,7 @@ function RefreshHandler({setisAuthenticated}) {
 
     const location = useLocation();
     const navigate = useNavigate();
+    console.log(location.pathname,"location.pathname")
 
     useEffect(()=>{
         
