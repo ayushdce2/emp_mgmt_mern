@@ -46,8 +46,8 @@ const EmployeeHome = () => {
                     </div>
                     <div className='bg-gray-200 h-[calc(100vh-3.6rem)] overflow-auto p-5'>
                         <Routes>
-                            <Route path={"/employee"} element={<Dashboard />}></Route>
-                            <Route path={"/employee/leave"} element={<Leave />}></Route>
+                            <Route path={"/"} element={<Dashboard />}></Route>
+                            <Route path={"/leave"} element={<Leave />}></Route>
                         </Routes>
                     </div>
                 </div>
