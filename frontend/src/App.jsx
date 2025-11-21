@@ -6,7 +6,6 @@ import Signup from './main_components/Signup.jsx';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import RefreshHandler from './main_components/RefreshHandler.jsx';
 import EmployeeHome from "./employee/EmployeeHome.jsx";
-import Home from "./Home.jsx";
 
 function App() {
 
