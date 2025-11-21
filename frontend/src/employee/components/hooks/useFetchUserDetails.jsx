@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react';
-import API from "../../utility/axios.jsx";
+import API from "../../../utility/axios.jsx";
 
 const useFetchUserDetails = () => {
   

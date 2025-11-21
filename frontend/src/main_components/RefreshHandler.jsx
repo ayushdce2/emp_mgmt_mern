@@ -17,7 +17,7 @@ function RefreshHandler({setisAuthenticated}) {
                 location.pathname === "/" ||
                 location.pathname === "/signup"
             ){
-                navigate("/home",{replace:false});
+                navigate("/employee",{replace:false});
             }
         }else{
             setisAuthenticated(false);

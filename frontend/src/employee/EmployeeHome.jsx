@@ -4,7 +4,12 @@ import Dashboard from './components/Dashboard.jsx';
 import Sidebar from "./components/Sidebar.jsx";
 import { Leave } from './components/Leave.jsx';
 
+
 const EmployeeHome = () => {
+
+
+
+
     return (
         <>
             <div className='flex h-screen'>

@@ -34,7 +34,7 @@ const useLogin = () => {
                 localStorage.setItem("loggedinuser",name);
                 
                 setTimeout(() => {
-                navigate("/home");
+                    navigate("/employee");
                 }, 1000);
             }
 

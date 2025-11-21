@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
-import { handleSuccess } from '../../utility/ToastCustom.jsx';
+import { handleSuccess } from '../../../utility/ToastCustom.jsx';
 
 const useLogout = () => {
   
@@ -22,7 +22,7 @@ const useLogout = () => {
 
     handleSuccess("LoggedOut Successfully");
         setTimeout(() => {
-        navigate("/");
+          navigate("/");
     }, 1000);
 
 
