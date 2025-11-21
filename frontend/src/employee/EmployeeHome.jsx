@@ -2,7 +2,12 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Dashboard from './components/Dashboard.jsx';
 import Sidebar from "./components/Sidebar.jsx";
-import { Leave } from './components/Leave.jsx';
+import Leave  from './components/Leave.jsx';
+import Attendance from './components/Attendance.jsx';
+import Ticket from "./components/Ticket.jsx";
+import Announcement from "./components/Announcement.jsx";
+import Profile from "./components/Profile.jsx";
+import Settings from "./components/Settings.jsx";
 
 
 const EmployeeHome = () => {
@@ -48,6 +53,11 @@ const EmployeeHome = () => {
                         <Routes>
                             <Route path={"/"} element={<Dashboard />}></Route>
                             <Route path={"/leave"} element={<Leave />}></Route>
+                            <Route path={"/attendance"} element={<Attendance />}></Route>
+                            <Route path={"/ticket"} element={<Ticket />}></Route>
+                            <Route path={"/announcement"} element={<Announcement />}></Route>
+                            <Route path={"/profile"} element={<Profile />}></Route>
+                            <Route path={"/settings"} element={<Settings />}></Route>
                         </Routes>
                     </div>
                 </div>

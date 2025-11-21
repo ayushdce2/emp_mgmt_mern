@@ -3,7 +3,7 @@ import React from 'react';
 import useLogout from './hooks/useLogout.jsx';
 import useFetchUserDetails from "./hooks/useFetchUserDetails.jsx";
 
-export const Leave = () => {
+const Leave = () => {
 
         const { loggedInUser, handleLogout } = useLogout();
         const { userProfileDetails } = useFetchUserDetails();
@@ -47,3 +47,5 @@ export const Leave = () => {
     </>
   )
 }
+
+export default Leave;

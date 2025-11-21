@@ -15,7 +15,7 @@ const Dashboard = () => {
       </div>
 
       <div className='mb-5'></div>
-<div className='flex gap-5'>
+<div className='flex justify-around'>
       <div className='bg-white rounded-lg w-[30rem]'>
           <div className='bg-gray-700 flex items-center p-3 gap-2 rounded-t-lg'>
             <div className='w-15 h-15 border border-white rounded-full flex items-center justify-center'>
@@ -47,10 +47,10 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className='bg-white rounded-lg w-[30rem]'>
+        <div className='bg-white rounded-lg w-[35rem]'>
        <div className='flex justify-between p-3'>
         <div className='flex flex-col items-center justify-between'>
-          <p className='font-[heading2] text-2xl'>Today's Attendance</p>
+          <p className='font-[heading2] text-2xl'>Mark Today's Attendance</p>
           <p className='text-lg text-gray-600'>Punch In at 10:00AM</p>
           <button className='bg-gray-700 text-white rounded p-2'>Punch Out</button>
         </div>
