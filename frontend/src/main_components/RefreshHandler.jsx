@@ -15,9 +15,8 @@ function RefreshHandler({setisAuthenticated}) {
         if(token && loggedinuser){
             setisAuthenticated(true);
             if(
-                location.pathname === "/login" ||
-                location.pathname === "/signup" ||
-                location.pathname === "/"
+                location.pathname === "/" ||
+                location.pathname === "/signup" 
             ){
                 navigate("/employee",{replace:false});
             }
