@@ -22,9 +22,9 @@ function App() {
       <RefreshHandler setisAuthenticated={setisAuthenticated}/>
         <Routes>
 
-          <Route path={"/"} element={<Login/>}></Route>
-          <Route path={"/signup"} element={<Signup/>}></Route>
-          <Route path={"/employee/employeehome/*"} element={<PrivateRoute element={<EmployeeHome/>}/>}></Route>
+          <Route path="/" element={<Login/>}></Route>
+          <Route path="/signup" element={<Signup/>}></Route>
+          <Route path={"/employee/*"} element={<PrivateRoute element={<EmployeeHome/>}/>}></Route>
           {/* <Route path={"/home"} element={<Home/>}></Route>       */}
         </Routes>
       </BrowserRouter>
