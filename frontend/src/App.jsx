@@ -11,7 +11,7 @@ function App() {
 
     const [isAuthenticated,setisAuthenticated]=useState(false);
     const PrivateRoute=({element})=>{
-      return isAuthenticated ? element : <Navigate to="/" />
+      return isAuthenticated ? element : <Navigate to="/login" />
     }
 
   return (
@@ -22,7 +22,7 @@ function App() {
       <RefreshHandler setisAuthenticated={setisAuthenticated}/>
         <Routes>
 
-          <Route path="/" element={<Login/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
           <Route path={"/employee/*"} element={<PrivateRoute element={<EmployeeHome/>}/>}></Route>
           {/* <Route path={"/home"} element={<Home/>}></Route>       */}
