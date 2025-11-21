@@ -2,7 +2,11 @@ import React from 'react'
 
 const Announcement = () => {
   return (
-    <div>Announcement</div>
+    <>
+    <div className=''>
+        <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>Announcements</p>
+      </div>
+    </>
   )
 }
 

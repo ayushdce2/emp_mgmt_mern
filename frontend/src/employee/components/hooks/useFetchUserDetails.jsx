@@ -1,9 +1,12 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect,createContext} from 'react';
 import API from "../../../utility/axios.jsx";
+
+// export const ThemeContext = createContext();
 
 const useFetchUserDetails = () => {
   
       const [userProfileDetails,setUserProfileDetails]=useState([]);
+      const [Loading,setLoading] = useState(true);
 
       const fetchUserProfileDetails = async ()=>{
     try{
@@ -16,6 +19,7 @@ const useFetchUserDetails = () => {
     const response = await API.get("/user/profile",headers);
     const data = response.data;
     setUserProfileDetails(data);
+    setLoading(false)
     // console.log(data,"useFetchUserDetails");
   }catch(error){
     console.log(error);
@@ -25,7 +29,7 @@ const useFetchUserDetails = () => {
     fetchUserProfileDetails();
   },[])
   
-    return {userProfileDetails}
+    return {Loading,userProfileDetails}
 }
 
 export default useFetchUserDetails

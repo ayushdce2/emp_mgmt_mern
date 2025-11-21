@@ -2,7 +2,11 @@ import React from 'react'
 
 const Settings = () => {
   return (
-    <div>Settings</div>
+    <>
+    <div className=''>
+        <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>Settings</p>
+      </div>
+    </>
   )
 }
 

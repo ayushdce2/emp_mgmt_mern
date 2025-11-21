@@ -8,11 +8,15 @@ import Ticket from "./components/Ticket.jsx";
 import Announcement from "./components/Announcement.jsx";
 import Profile from "./components/Profile.jsx";
 import Settings from "./components/Settings.jsx";
-
+import useLogout from './components/hooks/useLogout.jsx';
+import useFetchUserDetails from "./components/hooks/useFetchUserDetails.jsx";
 
 const EmployeeHome = () => {
-
-
+const {  handleLogout } = useLogout();
+    const { userProfileDetails,Loading } = useFetchUserDetails();
+    if(Loading){
+        return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
+    }
 
 
     return (
@@ -24,7 +28,7 @@ const EmployeeHome = () => {
                 <div className=' h-full w-full '>
                     {/* Main */}
                     <div className=''>
-                        <div className='flex ml-auto p-4 justify-end gap-4'>
+                        <div className='flex ml-auto p-3 justify-end gap-4 items-center'>
                             <div className=' w-6 h-6 flex items-center justify-center  overflow-hidden'>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
@@ -39,8 +43,14 @@ const EmployeeHome = () => {
 
                             </div>
 
-                            <div className='border-1 rounded-[100%] w-6 h-6 flex items-center justify-center overflow-hidden'>
+                            {/* <div className='border-1 rounded-[100%] w-6 h-6 flex items-center justify-center overflow-hidden'>
                                 <img src='./images/employee.png' className='w-[80%] h-[80%]' />
+                            </div> */}
+
+                            <div >
+                                <button onClick={handleLogout} className='flex gap-2 items-center font-[heading2] outline-2 outline-gray-400 px-3 py-1 rounded cursor-pointer hover:bg-[#eee] '>
+                                    <img src='./images/mdi-light--logout.svg' className='' /> Logout
+                                </button>
                             </div>
 
 

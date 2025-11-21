@@ -8,14 +8,19 @@ import announcement from "../assets/mdi--announcement-outline.svg";
 import profile from "../assets/mdi--account-edit-outline.svg";
 import setting from "../assets/mdi--settings-outline.svg";
 
+
 const Sidebar = () => {
     const { pathname } = useLocation();
-    console.log(pathname)
+    // console.log(pathname)
+
+
+
+
     return (
         <>
 
             <div className=' p-3 h-[3.56rem]'>
-                <p className='font-(family-name:--heading1)  text-2xl'>Hi, <span className='font-bold'>Mr. John</span> </p>
+                <p className='font-(family-name:--heading1)  text-2xl'>Hi, <span className='font-bold'>demo</span> </p>
             </div>
             <div className=' h-[calc(100vh-3.56rem)]  border-r-gray-950 p-3'>
                 <ul className='font-[heading2] tracking-wide '>

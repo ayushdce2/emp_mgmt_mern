@@ -4,14 +4,14 @@ import { handleSuccess } from '../../../utility/ToastCustom.jsx';
 
 const useLogout = () => {
   
-  const [loggedInUser,setloggedInUser]=useState("");
+  // const [loggedInUser,setloggedInUser]=useState("");
 
   const navigate = useNavigate();
 
-  useEffect(()=>{
-    const storedUser = localStorage.getItem("loggedinuser");
-    setloggedInUser(storedUser);
-  });
+  // useEffect(()=>{
+  //   const storedUser = localStorage.getItem("loggedinuser");
+  //   setloggedInUser(storedUser);
+  // });
 
   const handleLogout=()=>{
 
@@ -31,7 +31,8 @@ const useLogout = () => {
 
 
   
-    return {loggedInUser, handleLogout}
+    // return {loggedInUser, handleLogout}
+        return { handleLogout}
 }
 
 export default useLogout
