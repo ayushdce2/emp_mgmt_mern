@@ -7,7 +7,7 @@ const useLogin = () => {
 
     const navigate = useNavigate();
 
-    const [loginAllData, setLoginAllData]=useState({email:"ayush@aps.com",password:"ayush"});
+    const [loginAllData, setLoginAllData]=useState({email:"",password:""});
 
     const loginFormData = (e)=>{
         setLoginAllData((prev)=>({...prev,[e.target.name]:e.target.value}));
