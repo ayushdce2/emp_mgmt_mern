@@ -1,9 +1,9 @@
 import React from 'react';
-import useFetchUserDetails from "./hooks/useFetchUserDetails.jsx";
+import {useUserDetails} from "./hooks/EmpDetailsContext.jsx"; 
 
 const Profile = () => {
           
-  const { userProfileDetails } = useFetchUserDetails();
+const { userProfileDetails, Loading, error } = useUserDetails();
 
   return (
     <>

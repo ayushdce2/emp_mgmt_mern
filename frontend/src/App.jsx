@@ -6,6 +6,7 @@ import Signup from './main_components/Signup.jsx';
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import RefreshHandler from './main_components/RefreshHandler.jsx';
 import EmployeeHome from "./employee/EmployeeHome.jsx";
+import {UserDetailsProvider} from "./employee/components/hooks/EmpDetailsContext.jsx";
 
 function App() {
 
@@ -25,8 +26,11 @@ function App() {
 
           <Route path="/" element={<Login/>}></Route>
           <Route path="/signup" element={<Signup/>}></Route>
-          <Route path={"/employee/*"} element={<PrivateRoute element={<EmployeeHome/>}/>}></Route>
-          {/* <Route path={"/home"} element={<Home/>}></Route>       */}
+
+          
+          <Route path={"/employee/*"} element={<PrivateRoute element={<UserDetailsProvider><EmployeeHome/></UserDetailsProvider>}/>}></Route>
+    
+  
         </Routes>
       </BrowserRouter>
 
