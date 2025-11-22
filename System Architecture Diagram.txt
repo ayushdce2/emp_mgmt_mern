@@ -1,0 +1,42 @@
+                         ┌─────────────────────────────────────────┐
+                         │              FRONTEND (UI)               │
+                         │  - React / Angular / Vue                 │
+                         │  - Forms (Login/Registration)            │
+                         │  - Dashboards (Employee/HR/Admin)        │
+                         └─────────────┬──────────────┬────────────┘
+                                       │              │
+                                       ▼              ▼
+
+                 ┌────────────────────────────┐    ┌──────────────────────────────┐
+                 │   HTTP Requests (API)       │    │    Authentication Layer      │
+                 │ - Register / Login           │    │ - JWT Token Creation        │
+                 │ - CRUD APIs                  │    │ - Role-based Access Control │
+                 └───────────────┬─────────────┘    └──────────────┬──────────────┘
+                                 ▼                                 ▼
+
+                     ┌───────────────────────────────────────────────┐
+                     │                 BACKEND (API Server)           │
+                     │ (Node.js / Express / Django / Laravel)         │
+                     │                                                │
+                     │   Modules:                                     │
+                     │   - Auth Controller                            │
+                     │   - Employee Controller                        │
+                     │   - HR Controller                              │
+                     │   - Admin Controller                           │
+                     │   - Request/Attendance Controller              │
+                     │                                                │
+                     └───────────────┬───────────────────────────────┘
+                                     ▼
+
+                   ┌─────────────────────────────────────────┐
+                   │               DATABASE                   │
+                   │       MongoDB / MySQL / PostgreSQL       │
+                   │                                           │
+                   │ Tables/Collections:                       │
+                   │ - Users (id, name, email, pass, role)     │
+                   │ - EmployeeDetails                         │
+                   │ - Attendance                              │
+                   │ - LeaveRequests                           │
+                   │ - HR Reports                              │
+                   │ - System Config                           │
+                   └──────────────────────────────────────────┘
