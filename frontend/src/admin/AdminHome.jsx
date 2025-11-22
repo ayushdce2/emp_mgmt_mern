@@ -2,7 +2,7 @@ import React from 'react'
 
 const HrHome = () => {
   return (
-    <div>HrHome</div>
+    <div>AdminHome</div>
   )
 }
 

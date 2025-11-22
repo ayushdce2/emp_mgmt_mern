@@ -4,9 +4,14 @@ import phone_icon from "../assets/line-md--phone.svg";
 import message_icon from "../assets/tabler--message.svg";
 import chat_icon from "../assets/mdi--chat-outline.svg";
 import AttendanceChart from './AttendanceChart.jsx';
+import {useUserDetails} from "./hooks/EmpDetailsContext.jsx"; 
 
 
 const Dashboard = () => {
+  const { userProfileDetails, Loading, error } = useUserDetails();
+   if (Loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading profile</p>;
+    
   return (
     <>
       <div className=''>
@@ -15,14 +20,14 @@ const Dashboard = () => {
       </div>
 
       <div className='mb-5'></div>
-<div className='flex justify-around'>
-      <div className='bg-white rounded-lg w-[30rem]'>
+<div className=' flex flex-col md:flex-row gap-2 justify-around'>
+      <div className='bg-white rounded-lg w-full md:w-[30rem]'>
           <div className='bg-gray-700 flex items-center p-3 gap-2 rounded-t-lg'>
             <div className='w-15 h-15 border border-white rounded-full flex items-center justify-center'>
               <img src='./images/employee.png' className='w-[80%] h-[80%]' />
             </div>
             <div className='text-white'>
-              <p>John Cena</p>
+              <p>{userProfileDetails[0].name}</p>
               <p>Senior Graphic Designer</p>
             </div>
 
@@ -34,7 +39,7 @@ const Dashboard = () => {
             </div>
             <div className='flex gap-3 mb-3'>
               <p className='text-gray-500'>Email Address</p>
-              <p>John@john.com</p>
+              <p>{userProfileDetails[0].email}</p>
             </div>
             <div className='flex gap-3 mb-3'>
               <p className='text-gray-500'>Office Location</p>
@@ -47,7 +52,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        <div className='bg-white rounded-lg w-[35rem]'>
+        <div className='bg-white rounded-lg w-full md:w-[35rem]'>
        <div className='flex justify-between p-3'>
         <div className='flex flex-col items-center justify-between'>
           <p className='font-[heading2] text-2xl'>Mark Today's Attendance</p>

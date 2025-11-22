@@ -9,29 +9,43 @@ import Announcement from "./components/Announcement.jsx";
 import Profile from "./components/Profile.jsx";
 import Settings from "./components/Settings.jsx";
 import useLogout from './components/hooks/useLogout.jsx';
+import useMobToggleSidebar from "./components/hooks/useMobToggleSidebar.jsx";
 // import useFetchUserDetails from "./components/hooks/useFetchUserDetails.jsx";
-
+import {useUserDetails} from "./components/hooks/EmpDetailsContext.jsx"; 
 
 const EmployeeHome = () => {
 const {  handleLogout } = useLogout();
+const {mobSidebar,MobSidebarTogglerFunc } = useMobToggleSidebar();
+  const { userProfileDetails, Loading, error } = useUserDetails();
+   if (Loading) return <p>Loading...</p>;
+    if (error) return <p>Error loading profile</p>;
     // const { userProfileDetails,Loading } = useFetchUserDetails();
     // const { Loading, userProfileDetails } = useContext(UserDetailsContext);
     // console.log(Loading, userProfileDetails,"<==========")
     // if(Loading){
     //     return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
     // }
-
+console.log(mobSidebar,"home mobSidebar")
 
     return (
         <>
             <div className='flex h-screen'>
-                <div className='overflow-auto w-[18vw] h-screen '>
-                    <Sidebar />
+                <div className={`absolute z-1 md:relative overflow-auto bg-white md:w-[18vw] ${mobSidebar ? "w-[50%]" : "w-0"} h-screen ease-in delay-100 `}>
+                    <Sidebar MobSidebarTogglerFunc={MobSidebarTogglerFunc}/>
                 </div>
-                <div className=' h-full w-full '>
+                <div className={` h-full w-full `}>
                     {/* Main */}
                     <div className=''>
-                        <div className='flex ml-auto p-3 justify-end gap-4 items-center'>
+                        <div className='flex ml-auto p-3 justify-between md:justify-end gap-4 items-center'>
+                            <div className='md:hidden  '>
+                              
+                                <img src="/images/mdi--menu.svg" onClick={MobSidebarTogglerFunc}/>
+
+                            </div>
+                            <div>
+                                <p>Hi, {userProfileDetails[0].name}</p>
+
+                            </div>
                             <div className=' w-6 h-6 flex items-center justify-center  overflow-hidden'>
 
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-7">
@@ -62,7 +76,7 @@ const {  handleLogout } = useLogout();
 
                         </div>
                     </div>
-                    <div className='bg-gray-200 h-[calc(100vh-3.6rem)] overflow-auto p-5'>
+                    <div className={`bg-gray-200 h-[calc(100vh-3.6rem)] overflow-auto p-2 md:p-5 ${mobSidebar ? "pointer-events-none blur-sm" : "pointer-events-auto blur-none"} md:pointer-events-auto md:blur-none`}>
                         <Routes>
                             <Route path={"/"} element={<Dashboard />}></Route>
                             <Route path={"/leave"} element={<Leave />}></Route>
