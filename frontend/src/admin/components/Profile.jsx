@@ -1,9 +1,9 @@
 import React from 'react';
-import {useUserDetails} from "./hooks/EmpDetailsContext.jsx"; 
+import {useUserDetails} from "../../utility/UserDetailsContext.jsx"; 
 
 const Profile = () => {
           
-const { userProfileDetails, Loading, error } = useUserDetails();
+const { userProfileDetails} = useUserDetails();
 
   return (
     <>
@@ -20,6 +20,7 @@ const { userProfileDetails, Loading, error } = useUserDetails();
                   <div key={index}>
                     <p>Name - {data.name} </p>
                     <p>Email - {data.email} </p>
+                    <p>Role - {data.userRole} </p>
                     <p>
                       Joined On - {new Date(data.joinedOn).toLocaleString("en-US", {
                         dateStyle: "medium",

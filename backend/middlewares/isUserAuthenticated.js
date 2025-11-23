@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const isUserAuthenticated = (req,res,next)=>{
     const auth = req.headers["authorization"];
     
-    // console.log(req.user,"req.user");
+
     // console.log(auth,"auth")
 
     if(!auth){
@@ -14,6 +14,7 @@ const isUserAuthenticated = (req,res,next)=>{
     try{
         const decoded = jwt.verify(auth, process.env.JWT_Secret);
         req.user = decoded;
+            // console.log("auth working");
         next();
     }catch(error){
         return res.status(403).json({message:"Unauthorized Access or expired"})

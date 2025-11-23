@@ -15,6 +15,10 @@ const UserSchema = new Schema({
         type:String,
         required:true,
     },
+    userRole:{
+        type:String,
+        required:true,
+    },
     joinedOn: {
     type: Date,
     default: Date.now,

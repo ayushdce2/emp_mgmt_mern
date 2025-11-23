@@ -2,7 +2,7 @@ const UserModel = require("../models/User.js");
 
 const ProfileFunction = async (req, res) => {
     
-// console.log(req.user,"req.body");
+// console.log(req.query.email,"req.body");
 
 const {email,_id}= req.user;
     try{
@@ -15,6 +15,8 @@ const {email,_id}= req.user;
         }
 
 }
+
+
 
 
 

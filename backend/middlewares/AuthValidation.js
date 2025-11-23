@@ -5,6 +5,7 @@ const signupValidation = (req,res,next)=>{
         name:Joi.string().min(3).required(),
         email:Joi.string().email().required(),
         password:Joi.string().min(3).required(),
+        userRole:Joi.string().required(),
     });
 
     const {error} = schema.validate(req.body);
@@ -21,6 +22,7 @@ const loginValidation = (req,res,next)=>{
         
         email:Joi.string().email().required(),
         password:Joi.string().min(3).required(),
+        // userRole:Joi.string().required(),
     });
 
     const {error} = schema.validate(req.body);

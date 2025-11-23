@@ -28,10 +28,12 @@ app.use(cors());
 app.use(express.json()); //require for post method request
 
 
-const AuthRouter = require("./routes/AuthRouter.js")
-app.use("/api/auth",AuthRouter)
+const AuthRouter = require("./routes/AuthRouter.js");
+app.use("/api/auth",AuthRouter);
 const UserRouter = require("./routes/UserRouter.js");
-app.use("/api/user",UserRouter)
+app.use("/api/user",UserRouter);
+const AdminRouter = require("./routes/AdminRouter.js");
+app.use("/api/admin",AdminRouter);
 
 app.get("/api/",(req,res)=>{
     console.log("hi");

@@ -8,14 +8,16 @@ import announcement from "../assets/mdi--announcement-outline.svg";
 import profile from "../assets/mdi--account-edit-outline.svg";
 import setting from "../assets/mdi--settings-outline.svg";
 import attendance from "../assets/mdi--clock-outline.svg";
-import {useUserDetails} from "./hooks/EmpDetailsContext.jsx"; 
+import {useUserDetails} from "../../utility/UserDetailsContext.jsx"; 
 
 const Sidebar = ({MobSidebarTogglerFunc}) => {
     const { pathname } = useLocation();
     // console.log(pathname)
 const { userProfileDetails, Loading, error } = useUserDetails();
 
- if (Loading) return <p>Loading...</p>;
+     if(Loading){
+        return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
+    }
   if (error) return <p>Error loading profile</p>;
 console.log("sidebar")
 

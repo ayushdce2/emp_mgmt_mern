@@ -19,7 +19,8 @@ const Login = () => {
             <p className='text-4xl text-[#71b1e5] leading-9 font-bold mb-8'>Sign In</p>
             <form onSubmit={loginSubmit} className='flex flex-col'>
               <input type='text' placeholder='email' name="email" onChange={loginFormData} className='text-lg mb-5 h-10 p-2 outline-0 border-b-2 text-[#71b1e5] border-b-[#71b1e5]'/>
-              <input type='text' placeholder='password' name="password" onChange={loginFormData} className='text-lg mb-10 h-10 p-2 outline-0 border-b-2 text-[#71b1e5] border-b-[#71b1e5]'/>
+              <input type='text' placeholder='password' name="password" onChange={loginFormData} className='text-lg mb-5 h-10 p-2 outline-0 border-b-2 text-[#71b1e5] border-b-[#71b1e5]'/>
+              
               <button className='cursor-pointer rounded self-start p-2 bg-[#71b1e5] text-white'>Sign In</button>
             </form>
             <p className='text-right text-[#71b1e5]'>Don't have account? <Link to="/signup" className='font-bold'>SignUp </Link> Now.</p>

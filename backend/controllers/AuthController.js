@@ -4,13 +4,14 @@ const bcrypt = require("bcrypt");
 
 const SignupFunction = async (req, res) => {
     try {
-        const { name, email, password } = req.body;
-        console.log(name, email, password,"signup Controller");
+        console.log(req.body,"req.body");
+        const { name, email, password, userRole } = req.body;
+        console.log(name, email, password, userRole,"signup Controller");
         const existingUser = await UserModel.findOne({ email });
         if (existingUser) {
             return res.status(409).json({ success: false, message: 'Email already exists' });
         }
-        const user = new UserModel({ name, email, password });
+        const user = new UserModel({ name, email, password, userRole });
         user.password = await bcrypt.hash(password, 10);
         await user.save();
         res.status(201).json({ user, success: true, message: "Signup Success" });
@@ -40,7 +41,7 @@ const LoginFunction = async (req,res)=>{
                 process.env.JWT_Secret,
                 {expiresIn:"24h"}
         )
-        res.status(200).json({ existingUser, success: true, message: "LOGIN Success",jwtToken,email, name: existingUser.name });
+        res.status(200).json({ existingUser, success: true, message: "LOGIN Success",jwtToken,email, name: existingUser.name, userRole:existingUser.userRole });
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: 'Internal Server Error', success: false });

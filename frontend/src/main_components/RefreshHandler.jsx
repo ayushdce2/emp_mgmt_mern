@@ -11,14 +11,17 @@ function RefreshHandler({setisAuthenticated}) {
         
         const token = localStorage.getItem("token");
         const loggedinuser = localStorage.getItem("loggedinuser");
+        const userRole = localStorage.getItem("userRole");
 
-        if(token && loggedinuser){
+        if(token && loggedinuser && userRole){
             setisAuthenticated(true);
             if(
                 location.pathname === "/" ||
                 location.pathname === "/signup" 
             ){
-                navigate("/employee",{replace:false});
+                userRole==="employee" && navigate("/employee",{replace:false});
+                userRole==="hr" && navigate("/hr",{replace:false});
+                userRole==="admin" && navigate("/admin",{replace:false});                
             }
         }else{
             setisAuthenticated(false);

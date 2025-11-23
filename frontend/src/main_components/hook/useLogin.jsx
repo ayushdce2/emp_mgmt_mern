@@ -25,16 +25,19 @@ const useLogin = () => {
             const res = await API.post("/auth/login",loginAllData);
             const resJson = await res.data;
             // console.log(resJson,"<----------------resposne LOCAL");
-            const {message,success,error,jwtToken,name} =resJson;
-            // console.log(message,success,error,jwtToken,name)
+            const {message,success,error,jwtToken,name, userRole} =resJson;
+            console.log(message,success,error,jwtToken,name, userRole)
 
             if(success){
                 handleSuccess(message);
                 localStorage.setItem("token",jwtToken);
                 localStorage.setItem("loggedinuser",name);
+                localStorage.setItem("userRole",userRole);
                 
                 setTimeout(() => {
-                    navigate("/employee");
+                    userRole==="employee" && navigate("/employee");
+                    userRole==="hr" && navigate("/hr");
+                    userRole==="admin" && navigate("/admin");                                        
                 }, 1000);
             }
 

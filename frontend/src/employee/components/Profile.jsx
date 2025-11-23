@@ -20,6 +20,7 @@ const { userProfileDetails, Loading, error } = useUserDetails();
                   <div key={index}>
                     <p>Name - {data.name} </p>
                     <p>Email - {data.email} </p>
+                    <p>Role - {data.userRole} </p>
                     <p>
                       Joined On - {new Date(data.joinedOn).toLocaleString("en-US", {
                         dateStyle: "medium",
