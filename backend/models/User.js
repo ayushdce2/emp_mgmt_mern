@@ -19,10 +19,15 @@ const UserSchema = new Schema({
         type:String,
         required:true,
     },
-    joinedOn: {
+    loginedOn: {
     type: Date,
-    default: Date.now,
+    default: null,
   }
+  
+   
+  
+},{
+    timestamps:true
 })
 
 const UserModel = mongoose.model("User",UserSchema);

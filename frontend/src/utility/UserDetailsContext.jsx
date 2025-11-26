@@ -1,16 +1,21 @@
 import React,{createContext, useContext, useEffect, useState} from 'react';
 import API from "./axios.jsx";
+import { useNavigate } from 'react-router-dom';
 
 const UserDetailsContext = createContext();
 
 const UserDetailsProvider  = ({children}) => {
-  
+  const navigate = useNavigate();
       const [userProfileDetails,setUserProfileDetails]=useState(null);
       const [Loading,setLoading] = useState(true);
         const [error, setError] = useState(null);
+        const [loginAgain,setLoginAgain] = useState(false);
+      
+    
 
       const fetchUserProfileDetails = async ()=>{
     try{
+      
       const headers ={
       headers:{
         "Authorization":localStorage.getItem("token"),
@@ -19,12 +24,28 @@ const UserDetailsProvider  = ({children}) => {
     // const token = localStorage.getItem("token");
     const response = await API.get("/user/profile",headers);
     const data = response.data;
-    setUserProfileDetails(data);
-    setLoading(false)
-    // console.log(data,"useFetchUserDetails");
+    if(data.length==0){
+      localStorage.removeItem("loggedinuser");
+      localStorage.removeItem("token");
+      localStorage.removeItem("userRole");
+      setLoginAgain(true);
+      setTimeout(() => {
+          navigate("/");
+      }, 4000);
+      
+    }else{
+      setUserProfileDetails(data);
+      setLoading(false);
+    }
+    
+    // console.log(data,"<==useFetchUserDetails",data.length);
   }catch(error){
-    console.log(error);
+    // console.log(error, "<=====useFetchUserDetails ERROR");
     setError(error)
+              
+    localStorage.removeItem("loggedinuser");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userRole");
   }
   }
   useEffect(()=>{
@@ -32,7 +53,7 @@ const UserDetailsProvider  = ({children}) => {
   },[])
   
     return (
-      <UserDetailsContext.Provider value={{Loading,error, userProfileDetails}}>
+      <UserDetailsContext.Provider value={{Loading,error,loginAgain, userProfileDetails, refetch : fetchUserProfileDetails}}>
         {children}
       </UserDetailsContext.Provider>
     )

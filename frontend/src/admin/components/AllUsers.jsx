@@ -29,7 +29,10 @@ const AllUsers = () => {
                         <p>Name:  {data.name}</p>
                     </div>
                     <div>
-                        <p>D.O.J: {data.joinedOn}</p>
+                        <p>D.O.J: {new Date(data.createdAt).toLocaleString("en-US", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                })}</p>
                     </div>
                     <div>
                         <p>Email: {data.email}</p>

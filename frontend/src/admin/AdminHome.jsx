@@ -1,11 +1,11 @@
 import React from 'react';
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Link } from "react-router-dom";
 import Dashboard from './components/Dashboard.jsx';
 import Sidebar from "./components/Sidebar.jsx";
 import Profile from "./components/Profile.jsx";
 import AllUsers from './components/AllUsers.jsx';
 import Settings from "./components/Settings.jsx";
-import useLogout from './components/hooks/useLogout.jsx';
+import useLogout from '../main_components/useLogout.jsx';
 import useMobToggleSidebar from "./components/hooks/useMobToggleSidebar.jsx";
 // import useFetchUserDetails from "./components/hooks/useFetchUserDetails.jsx";
 // import {useUserDetails} from "./components/hooks/EmpDetailsContext.jsx";
@@ -13,18 +13,24 @@ import {useUserDetails} from "../utility/UserDetailsContext.jsx" ;
 import EditUser from './components/EditUser.jsx';
 
 const AdminHome = () => {
-const {  handleLogout } = useLogout();
+
+  const {  handleLogout,checkingSessionLogout } = useLogout();
+    checkingSessionLogout();
 const {mobSidebar,MobSidebarTogglerFunc } = useMobToggleSidebar();
-  const { userProfileDetails, Loading, error } = useUserDetails();
-       if(Loading){
-        return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
+  const { userProfileDetails, Loading, error,loginAgain } = useUserDetails();
+
+//   if(userProfileDetails==null) return handleLogout();
+if(loginAgain) return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="/images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Login Again</p></div>)
+  if (error) return <p>Error loading profile<Link to="/">Login</Link></p>;    
+  if(Loading){
+        return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="/images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
     }
-    if (error) return <p>Error loading profile</p>;
+    
     // const { userProfileDetails,Loading } = useFetchUserDetails();
     // const { Loading, userProfileDetails } = useContext(UserDetailsContext);
     // console.log(Loading, userProfileDetails,"<==========")
 
-// console.log(mobSidebar,"home mobSidebar")
+// console.log(userProfileDetails.length,"home mobSidebar")
 
     return (
         <>

@@ -26,13 +26,14 @@ const useLogin = () => {
             const resJson = await res.data;
             // console.log(resJson,"<----------------resposne LOCAL");
             const {message,success,error,jwtToken,name, userRole} =resJson;
-            console.log(message,success,error,jwtToken,name, userRole)
+            // console.log(message,success,error,jwtToken,name, userRole)
 
             if(success){
                 handleSuccess(message);
                 localStorage.setItem("token",jwtToken);
                 localStorage.setItem("loggedinuser",name);
                 localStorage.setItem("userRole",userRole);
+                localStorage.setItem("loginedOn_data",new Date())
                 
                 setTimeout(() => {
                     userRole==="employee" && navigate("/employee");

@@ -5,7 +5,7 @@ import leave from "../assets/fluent-mdl2--vacation.svg";
 import salary from "../assets/mdi--rupee.svg";
 import task from "../assets/mdi--calendar-task-outline.svg";
 import announcement from "../assets/mdi--announcement-outline.svg";
-import profile from "../assets/mdi--account-edit-outline.svg";
+import profile from "../assets/mdi--user-outline.svg";
 import setting from "../assets/mdi--settings-outline.svg";
 import attendance from "../assets/mdi--clock-outline.svg";
 import {useUserDetails} from "../../utility/UserDetailsContext.jsx"; 

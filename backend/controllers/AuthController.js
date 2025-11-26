@@ -39,8 +39,10 @@ const LoginFunction = async (req,res)=>{
         const jwtToken = jwt.sign(
                 {email:existingUser.email, _id:existingUser._id},
                 process.env.JWT_Secret,
-                {expiresIn:"24h"}
+                {expiresIn:"20m"}
         )
+        
+
         res.status(200).json({ existingUser, success: true, message: "LOGIN Success",jwtToken,email, name: existingUser.name, userRole:existingUser.userRole });
     } catch (error) {
         console.error(error);
@@ -49,4 +51,25 @@ const LoginFunction = async (req,res)=>{
 
 }
 
-module.exports = {LoginFunction,SignupFunction};
+const LogOutFunction = async (req,res)=>{
+try {
+    // console.log(req.body,"req.body");
+        const {  _id, email, loginedOn_data } = req.body;
+
+        const existingUser = await UserModel.findOne({ email });
+        if (!existingUser) {
+            return res.status(403).json({ message: 'User Not Found', success: false });
+        }
+        
+        await UserModel.findByIdAndUpdate(_id,{loginedOn: loginedOn_data},{new:true})
+
+// console.log(updateLoginedOn,"<=================updateLoginedOn")
+        
+        res.status(200).json({ existingUser, success: true, message: "LOGOUT Success"});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error', success: false });
+    }
+}
+
+module.exports = {LoginFunction,SignupFunction,LogOutFunction};

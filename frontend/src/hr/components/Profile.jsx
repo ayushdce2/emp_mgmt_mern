@@ -22,7 +22,7 @@ const { userProfileDetails, Loading, error } = useUserDetails();
                     <p>Email - {data.email} </p>
                     <p>Role - {data.userRole} </p>
                     <p>
-                      Joined On - {new Date(data.joinedOn).toLocaleString("en-US", {
+                      Joined On - {new Date(data.createdAt).toLocaleString("en-US", {
                         dateStyle: "medium",
                         timeStyle: "short",
                       })}
