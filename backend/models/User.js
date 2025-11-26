@@ -11,6 +11,15 @@ const UserSchema = new Schema({
         required:true,
         unique: true
     },
+    phoneno:{
+        type:String
+    },
+    jobprofile:{
+        type:String
+    },
+    officelocation:{
+        type:String
+    },
     password:{
         type:String,
         required:true,

@@ -12,8 +12,8 @@ const Profile = () => {
   if(error) return "Error";
   if(Loading) return "Loading";
 
-  const { email, createdAt, name, userRole,loginedOn } = userProfileDetails[0];
-  console.log(typeof(refetch),"refetch")
+  const { name,email, phoneno,jobprofile,officelocation,createdAt, userRole,loginedOn } = userProfileDetails[0];
+  // console.log(typeof(refetch),"refetch")
 
   return (
     <>
@@ -43,6 +43,18 @@ const Profile = () => {
               <div className='flex gap-2' >
                 <p className='text-gray-500'>Email : </p>
                 <p>{email}</p>
+              </div>
+              <div className='flex gap-2' >
+                <p className='text-gray-500'>phoneno : </p>
+                <p>{phoneno}</p>
+              </div>
+              <div className='flex gap-2' >
+                <p className='text-gray-500'>jobprofile : </p>
+                <p>{jobprofile}</p>
+              </div>
+              <div className='flex gap-2' >
+                <p className='text-gray-500'>officelocation : </p>
+                <p>{officelocation}</p>
               </div>
 
 

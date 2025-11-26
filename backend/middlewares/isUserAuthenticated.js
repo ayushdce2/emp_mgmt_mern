@@ -14,7 +14,7 @@ const isUserAuthenticated = (req,res,next)=>{
     try{
         const decoded = jwt.verify(auth, process.env.JWT_Secret);
         req.user = decoded;
-            // console.log("auth working");
+            // console.log(req.user,"auth working");
         next();
     }catch(error){
         return res.status(403).json({message:"Unauthorized Access or expired"})
