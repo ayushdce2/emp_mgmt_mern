@@ -8,7 +8,8 @@ import announcement from "../assets/mdi--announcement-outline.svg";
 import profile from "../assets/mdi--user-outline.svg";
 import setting from "../assets/mdi--settings-outline.svg";
 import attendance from "../assets/mdi--clock-outline.svg";
-import {useUserDetails} from "../../utility/UserDetailsContext.jsx"; 
+import {useUserDetails} from "../../utility/UserDetailsContext.jsx";
+import Messaging_icon from "../assets/mdi--chat-outline.svg"; 
 
 const Sidebar = ({MobSidebarTogglerFunc}) => {
     const { pathname } = useLocation();
@@ -30,7 +31,11 @@ const { userProfileDetails, Loading, error } = useUserDetails();
             <div className=' h-[calc(100vh-3.56rem)]  border-r-gray-950 p-3'>
                 <ul className='font-[heading2] tracking-wide '>
                     <li><Link to={"/admin"} className={`flex gap-2 items-center p-2 mb-1  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin" && "bg-gray-400 hover:bg-gray-400"} `} onClick={MobSidebarTogglerFunc}><img src={dashboard} className='w-5 h-5' /><p>Dashboard</p></Link></li>
-                    <li><Link to={"/admin/allusers"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/allusers" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={leave} className='w-5 h-5' /><p>All Users</p></Link></li>
+                    <li><Link to={"/admin/leave"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/leave" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={leave} className='w-5 h-5' /><p>Leave</p></Link></li>
+                    <li><Link to={"/admin/attandance"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/attandance" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src='/images/clarity--employee-line.svg' className='w-5 h-5' /><p>Attandance</p></Link></li>
+                    <li><Link to={"/admin/messaging"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/messaging" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={Messaging_icon} className='w-5 h-5' /><p>Messaging</p></Link></li>
+                    <li><Link to={"/admin/announcement"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/announcement" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={announcement} className='w-5 h-5' /><p>Announcement</p></Link></li>
+                    <li><Link to={"/admin/allusers"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/allusers" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src="/images/clarity--employee-group-line.svg" className='w-5 h-5' /><p>Manage Users</p></Link></li>
                     <li><Link to={"/admin/profile"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/profile" && "bg-gray-400 hover:bg-gray-400"  }`} onClick={MobSidebarTogglerFunc}><img src={profile} className='w-5 h-5' /><p>Profile</p></Link></li>
                     <li><Link to={"/admin/settings"} className={`flex gap-2 items-center p-2 hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/settings" && "bg-gray-400 hover:bg-gray-400"  }`} onClick={MobSidebarTogglerFunc}><img src={setting} className='w-5 h-5' /><p>Settings</p></Link></li>
                 </ul>

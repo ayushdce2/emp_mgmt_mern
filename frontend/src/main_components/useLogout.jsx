@@ -64,6 +64,7 @@ const useLogout = () => {
   const checkingSessionLogout = () => {
 
     setTimeout(() => {
+      handleLogout();
       navigate("/");
     }, 20 * 60 * 1000);
   }

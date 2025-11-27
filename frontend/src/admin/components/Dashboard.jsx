@@ -3,21 +3,22 @@ import LeaveChart from "./LeaveChart.jsx";
 import phone_icon from "../assets/line-md--phone.svg";
 import message_icon from "../assets/tabler--message.svg";
 import chat_icon from "../assets/mdi--chat-outline.svg";
-import AttendanceChart from './AttendanceChart.jsx';
+
+import MarkAttandance from './MarkAttandance.jsx';
 import {useUserDetails} from "../../utility/UserDetailsContext.jsx"; 
 
 
 const Dashboard = () => {
   const { userProfileDetails, Loading, error } = useUserDetails();
-       if(Loading){
+       
+    if (error) return <p>Error loading profile</p>;
+    if(Loading){
         return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
     }
-    if (error) return <p>Error loading profile</p>;
-    
   return (
     <>
       <div className=''>
-        <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>Employee Dashboard</p>
+        <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>{(userProfileDetails[0].userRole).charAt(0).toUpperCase() + (userProfileDetails[0].userRole).slice(1)} Dashboard</p>
         
       </div>
 
@@ -30,14 +31,14 @@ const Dashboard = () => {
             </div>
             <div className='text-white'>
               <p>{userProfileDetails[0].name}</p>
-              <p>Senior Graphic Designer</p>
+              <p>{userProfileDetails[0].userRole}</p>
             </div>
 
           </div>
           <div className='p-3 rounded-lg'>
             <div className='flex gap-3 mb-3'>
               <p className='text-gray-500'>Phone Number</p>
-              <p>+91 9999999999</p>
+              <p>{userProfileDetails[0].phoneno}</p>
             </div>
             <div className='flex gap-3 mb-3'>
               <p className='text-gray-500'>Email Address</p>
@@ -45,26 +46,21 @@ const Dashboard = () => {
             </div>
             <div className='flex gap-3 mb-3'>
               <p className='text-gray-500'>Office Location</p>
-              <p>India</p>
+              <p>{userProfileDetails[0].officelocation}</p>
             </div>
             <div className='flex gap-3'>
               <p className='text-gray-500'>Joining</p>
-              <p>8 Aug 2024</p>
+              <p>{new Date(userProfileDetails[0].createdAt).toLocaleString("en-US", {
+                  dateStyle: "medium",
+                  timeStyle: "short",
+                })}</p>
             </div>
           </div>
         </div>
 
         <div className='bg-white rounded-lg w-full md:w-[35rem]'>
-       <div className='flex justify-between p-3'>
-        <div className='flex flex-col items-center justify-between'>
-          <p className='font-[heading2] text-2xl'>Mark Today's Attendance</p>
-          <p className='text-lg text-gray-600'>Punch In at 10:00AM</p>
-          <button className='bg-gray-700 text-white rounded p-2'>Punch Out</button>
-        </div>
-        <div>
-          <AttendanceChart/>
-        </div>
-       </div>
+          <MarkAttandance/>
+      
   
         </div>
         </div>
