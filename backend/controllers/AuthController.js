@@ -46,7 +46,7 @@ const LoginFunction = async (req,res)=>{
         res.status(200).json({ existingUser, success: true, message: "LOGIN Success",jwtToken,email, name: existingUser.name, userRole:existingUser.userRole });
     } catch (error) {
         console.error(error);
-        res.status(500).json({ message: 'Internal Server Error', success: false });
+        res.status(500).json({ message: 'Internal Server Error', success: false,error });
     }
 
 }

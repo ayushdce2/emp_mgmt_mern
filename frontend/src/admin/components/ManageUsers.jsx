@@ -2,7 +2,7 @@ import React from 'react';
 import UsersListFunction from "./hooks/useUsersList.jsx";
 import { Link } from "react-router-dom"
 
-const AllUsers = () => {
+const ManageUsers = () => {
 
     const { UsersList, Loading, error } = UsersListFunction();
     // console.log(UsersList, Loading, error);
@@ -21,8 +21,8 @@ const AllUsers = () => {
                 {
                     UsersList.map((data, index) => {
                         return (<>
-                            <div className='bg-gray-300 rounded p-3 flex flex-col gap-3 hover:bg-gray-400'>
-                                <div className='border-1 w-[10rem] h-[10rem] self-center flex items-center justify-center rounded-full overflow-hidden p-1'>
+                            <div className='hover:bg-gray-400 ease-in duration-200 bg-gray-300 rounded p-3 flex flex-col gap-3  '>
+                                <div className='border-1 border-gray-500 w-[10rem] h-[10rem] self-center flex items-center justify-center rounded-full overflow-hidden p-2'>
                                     <img src='/images/employee.png' className='w-[90%] h-[90%] object-contain' />
                                 </div>
                                 <div key={data._id}>
@@ -41,7 +41,7 @@ const AllUsers = () => {
                                     <p>Role Assigned: {data.userRole}</p>
                                 </div>
                                 <div className='flex justify-end '>
-                                    <Link to={`/admin/edituser/${data.email}`} className='hover:bg-gray-500 p-1 cursor-pointer border-1 rounded'>Edit Details</Link>
+                                    <Link to={`/admin/edituser/${data.email}`} className='hover:bg-gray-500 hover:text-gray-200 p-1 cursor-pointer border-1 border-gray-500 rounded text-gray-800'>Edit Details</Link>
                                 </div>
                             </div>
                         </>)
@@ -56,4 +56,4 @@ const AllUsers = () => {
     )
 }
 
-export default AllUsers
+export default ManageUsers

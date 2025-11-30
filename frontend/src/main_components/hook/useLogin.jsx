@@ -46,7 +46,8 @@ const useLogin = () => {
         }catch(error){
             console.log(error);
             error.status == "400" && handleError(error.response.data.error.details[0].message);
-            error.status == "403" && handleError(error.response.data.message)
+            error.status == "403" && handleError(error.response.data.message);
+            error.status == "500" && handleError(error.response.data.message)
         }
         
     }

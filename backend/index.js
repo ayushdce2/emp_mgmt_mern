@@ -1,7 +1,9 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-require("./models/db.js");
+// require("./models/db.js")(app);
+const { MongooseDBConnectionFunction } = require("./models/db.js");
+MongooseDBConnectionFunction(app); //to check if db is connected
 const cors = require("cors");
 
 // const allowedOrigins = [
@@ -27,6 +29,8 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json()); //require for post method request
 
+const { isDbConnected } = require("./middlewares/isDbConnected.js");
+app.use(isDbConnected);//to check if db is connected
 
 const AuthRouter = require("./routes/AuthRouter.js");
 app.use("/api/auth",AuthRouter);
