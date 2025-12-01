@@ -23,7 +23,7 @@ const useMarkAttandance = () => {
 
 
 
-    const MarkTodaysAttandance = () => {
+    const MarkTodaysAttandance = async () => {
         // const MarkedTiming = new Date(Date.now());
         // toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })
 
@@ -66,7 +66,7 @@ const useMarkAttandance = () => {
         if (buttontext == "Punch In") {
             setButtontext("Punch Out");
             // setPunchInValue(MarkedTiming);
-            PunchInFunction();
+            await PunchInFunction();
             return;
         }
 
@@ -85,7 +85,7 @@ const useMarkAttandance = () => {
             // const Workinghours = Math.floor(diffMinutes / 60);
             // const Workingminutes = diffMinutes % 60;
             // setTotalWorkingHours(`${Workinghours}hr ${Workingminutes}min`)
-            PunchOutFunction(recordId);
+            await PunchOutFunction(recordId);
             //   console.log(`Worked: ${hours}h ${minutes}m`);
 
 
