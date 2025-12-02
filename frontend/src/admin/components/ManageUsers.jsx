@@ -7,7 +7,7 @@ const ManageUsers = () => {
     const { UsersList, Loading, error } = UsersListFunction();
     // console.log(UsersList, Loading, error);
     if (Loading) {
-        return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
+        return (<div className=' h-full bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="/images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
     }
     if (error) return <p>Error loading profile</p>;
 
