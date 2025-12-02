@@ -5,7 +5,8 @@ import useLogin from './hook/useLogin.jsx';
 
 const Login = () => {
 
-    const {loginFormData,loginSubmit} = useLogin();
+    const {loginFormData,loginSubmit,openServerinnewtabtostartserver} = useLogin();
+    openServerinnewtabtostartserver();
 
   return (
     <>

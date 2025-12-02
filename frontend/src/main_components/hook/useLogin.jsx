@@ -52,7 +52,12 @@ const useLogin = () => {
         
     }
 
-    return {loginFormData,loginSubmit}
+    const openServerinnewtabtostartserver = ()=>{
+        console.log("openServerinnewtabtostartserver");
+        window.open("https://emp-mgmt-mern.onrender.com/", "_blank");
+    }
+
+    return {loginFormData,loginSubmit,openServerinnewtabtostartserver}
 }
 
 export default useLogin
