@@ -1,27 +1,68 @@
-import React from 'react'
+import React from 'react';
+import useLeaveApply from './hooks/useLeaveApply';
+import useLeaveSummary from './hooks/useLeaveSummary';
 
 const Leave = () => {
+    const {leaveSummary, loading, error,refetch} = useLeaveSummary();
+    
+  const {formData, fetchFormData, submitFormData} = useLeaveApply({refetch});
+if(loading){
+  return "Loading"
+}
+
+
+  
   return (
     <>
          <div className=''>
         <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>Leave</p>
       </div>
-      <div className='flex justify-between items-start'>
+      <div className='flex flex-col md:flex-row justify-between items-start'>
 
-        <div className='w-[49%] py-3'>
+        <div className='w-full md:w-[49%] py-3'>
           <div>
                     <p className='font-[heading2] bg-gray-300 p-1 px-2 rounded text-xl'>Apply Leave</p>
           
                   </div>
+                  <div>
+                    <form className='flex flex-col gap-3' onSubmit={submitFormData}>
+                      <div className='flex items-center gap-3 mt-3'>
+                      <label className=' text-gray-700 tracking-wider w-[7rem]  text-nowrap'>Leave Type</label>
+                      <select onChange={fetchFormData} name='leave_type' className='w-[70%] outline-0 border-b-2 text-gray-700 tracking-wider border-b-gray-400 p-2'>
+                        <option>Leave Type</option>
+                        <option value={"sick"}>Sick</option>
+                        <option value={"casual"}>Casual</option>
+                        <option value={"workfromhome"}>Work From Home</option>
+                      </select>
+                      </div>
+<div className='flex items-center gap-3'>
+  <label className=' text-gray-700 tracking-wider w-[7rem] text-nowrap'>Date From</label>
+  <input type='date' name="date_from" onChange={fetchFormData} className='outline-0 p-2 border-b-2 text-gray-700 tracking-wider border-b-gray-400 w-[70%]'/>
+</div>
+<div className='flex items-center gap-3'>
+  <label className=' text-gray-700 tracking-wider w-[7rem]'>Date To</label>
+  <input type='date' name='date_to' onChange={fetchFormData} className='w-[70%] outline-0 p-2 border-b-2 text-gray-700 tracking-wider border-b-gray-400'/>
+</div>
+<div className='flex items-center gap-3'>
+  <label className=' text-gray-700 tracking-wider w-[7rem]  text-nowrap'>Leave Reason</label>
+  <input type='text' name="leave_reason" onChange={fetchFormData}  placeholder='Leave Reason' className='w-[70%] mb-1 h-10 p-2 outline-0 border-b-2 text-gray-700 tracking-wider border-b-gray-400'/>
+</div>                      
+                      
+            
+            <div className='flex justify-center mt-3'>
+            <button type='submit' className='p-2 bg-gray-500 rounded text-gray-300 cursor-pointer'>Submit Leave Request</button>
+          </div>
+          </form>
+                  </div>
         </div>
-      <div className='w-[49%] py-3'>
+      <div className='w-full md:w-[49%] py-3'>
         <div>
-                    <p className='font-[heading2] bg-gray-300 p-1 px-2 rounded text-xl'>Apply Balance</p>
+                    <p className='font-[heading2] bg-gray-300 p-1 px-2 rounded text-xl'>Leave Balance</p>
           
                   </div>
-<div className='flex flex-wrap gap-2 py-3'>
+<div className='flex flex-wrap gap-2 justify-center py-3'>
         
-        <div className='border-1 border-gray-400  rounded w-[12rem]'>
+        <div className='border-1 border-gray-400  rounded w-[80%] md:w-[12rem]'>
           <div className='rounded bg-[#ddd] p-2'>
             <p className=' font-[heading2] tracking-wide text-gray-800'>Casual Leave</p>
           </div>
@@ -30,7 +71,7 @@ const Leave = () => {
           </div>
         </div>
 
-        <div className='border-1 border-gray-400  rounded w-[12rem]'>
+        <div className='border-1 border-gray-400  rounded w-[80%] md:w-[12rem]'>
           <div className='rounded bg-[#ddd] p-2'>
             <p className=' font-[heading2] tracking-wide text-gray-800'>Sick Leave</p>
           </div>
@@ -39,7 +80,7 @@ const Leave = () => {
           </div>
         </div>
 
-        <div className='border-1 border-gray-400  rounded w-[12rem]'>
+        <div className='border-1 border-gray-400  rounded  w-[80%] md:w-[12rem]'>
           <div className='rounded bg-[#ddd] p-2'>
             <p className=' font-[heading2] tracking-wide text-gray-800'>Absentee</p>
           </div>
@@ -48,7 +89,7 @@ const Leave = () => {
           </div>
         </div>
 
-        <div className='border-1 border-gray-400  rounded w-[12rem]'>
+        <div className='border-1 border-gray-400  rounded  w-[80%] md:w-[12rem]'>
           <div className='rounded bg-[#ddd] p-2'>
             <p className=' font-[heading2] tracking-wide text-gray-800'>Work From Home</p>
           </div>
@@ -67,29 +108,47 @@ const Leave = () => {
                     <p className='font-[heading2] bg-gray-300 p-1 px-2 rounded text-xl'>Leave Summary</p>
           
                   </div>
-                  <div className='py-3'>
-                    <table>
+                  <div className='py-3 overflow-auto w-full'>
+                    {
+                      loading ? "Loading . . . ." : (
+                        <>
+                        <table className='text-nowrap'>
                       <thead className='border-y-1 border-y-gray-500 text-gray-500'>
                         <tr>
                           <th className='w-[3rem] p-2'>S.No.</th>
-                          <th className='w-[10rem]'>Leave Type</th>
-                          <th className='w-[10rem]'>Dates requested</th>
-                          <th className='w-[10rem]'>Applied On</th>
-                          <th className='w-[10rem]'>Status</th>
-                          <th className=''>Reason</th>
+                          <th className='w-[10rem] p-2'>Leave Type</th>
+                          <th className='w-[10rem] p-2'>Date From</th>
+                          <th className='w-[10rem] p-2'>Date To</th>
+                          <th className='w-[10rem] p-2'>Applied On</th>
+                          <th className='w-[10rem] p-2'>Status</th>
+                          <th className='p-2'>Reason</th>
                         </tr>
                       </thead>
                       <tbody className='text-center text-gray-700'>
-                        <tr>
-                          <td>1</td>
-                          <td>Sick</td>
-                          <td>10 Nov 2025</td>
-                          <td>10 NOv 2025</td>
-                          <td>Waiting</td>
-                          <td>feeling sick . . . . . </td>
+                        {
+                          leaveSummary ? (leaveSummary?.map((data,index)=>{
+                            return(
+                            <tr>
+                          <td className='p-1'>{index+1}</td>
+                          <td className='p-1'>{ data.leave_type}</td>
+                          <td className='p-1'>{ new Date(data.date_from).toLocaleString("en-US", { dateStyle: "medium" })}</td>
+                          <td className='p-1'>{ new Date(data.date_to).toLocaleString("en-US", { dateStyle: "medium"})}</td>
+                          <td className='p-1'>{ new Date(data.createdAt).toLocaleString("en-US", { dateStyle: "medium" })}</td>
+                          <td className='p-1'>Waiting</td>
+                          <td className='p-1'>{data.leave_reason}</td>
                         </tr>
+                            )
+                          })) : "No Data Found"
+                        }
+                        
+                       
                       </tbody>
                     </table>
+                        
+                        </>
+                      )
+                    }
+                    
                   </div>
         </div>
       

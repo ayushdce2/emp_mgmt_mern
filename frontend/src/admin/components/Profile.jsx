@@ -24,7 +24,7 @@ const Profile = () => {
         <div className='w-[10rem] h-[10rem] border rounded-full flex justify-center items-center'>
           <img src='/images/employee.png' className='w-[80%] h-[80%]' />
         </div>
-        <div className='grid grid-cols-3'>
+        <div className='grid grid-cols-1 md:grid-cols-3 w-[98%] md:w-auto '>
 
           <div className='p-2'>
             <div className=''>

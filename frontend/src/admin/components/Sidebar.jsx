@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link, useLocation } from "react-router-dom";
 import dashboard from '../assets/mdi--view-dashboard-outline.svg';
 import leave from "../assets/fluent-mdl2--vacation.svg";
@@ -20,6 +20,7 @@ const { userProfileDetails, Loading, error } = useUserDetails();
         return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
     }
   if (error) return <p>Error loading profile</p>;
+  const [openSubmenu,setOpenSubmenu] = useState(null);
 // console.log("sidebar")
 
     return (
@@ -30,14 +31,21 @@ const { userProfileDetails, Loading, error } = useUserDetails();
             </div>
             <div className=' h-[calc(100vh-3.56rem)]  border-r-gray-950 p-3'>
                 <ul className='font-[heading2] tracking-wide '>
-                    <li><Link to={"/admin"} className={`flex gap-2 items-center p-2 mb-1  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin" && "bg-gray-400 hover:bg-gray-400"} `} onClick={MobSidebarTogglerFunc}><img src={dashboard} className='w-5 h-5' /><p>Dashboard</p></Link></li>
-                    <li><Link to={"/admin/leave"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/leave" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={leave} className='w-5 h-5' /><p>Leave</p></Link></li>
-                    <li><Link to={"/admin/attandance"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/attandance" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src='/images/clarity--employee-line.svg' className='w-5 h-5' /><p>Attandance</p></Link></li>
-                    <li><Link to={"/admin/messaging"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/messaging" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={Messaging_icon} className='w-5 h-5' /><p>Messaging</p></Link></li>
-                    <li><Link to={"/admin/announcement"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/announcement" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src={announcement} className='w-5 h-5' /><p>Announcement</p></Link></li>
-                    <li><Link to={"/admin/manageusers"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/manageusers" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src="/images/clarity--employee-group-line.svg" className='w-5 h-5' /><p>Manage Users</p></Link></li>
-                    <li><Link to={"/admin/profile"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/profile" && "bg-gray-400 hover:bg-gray-400"  }`} onClick={MobSidebarTogglerFunc}><img src={profile} className='w-5 h-5' /><p>Profile</p></Link></li>
-                    <li><Link to={"/admin/settings"} className={`flex gap-2 items-center p-2 hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/settings" && "bg-gray-400 hover:bg-gray-400"  }`} onClick={MobSidebarTogglerFunc}><img src={setting} className='w-5 h-5' /><p>Settings</p></Link></li>
+                    <li><Link to={"/admin"} className={`flex gap-2 items-center p-2 mb-1  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin" && "bg-gray-400 hover:bg-gray-400"} `} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "dashboard" ? null : "dashboard")}}><img src={dashboard} className='w-5 h-5' /><p>Dashboard</p></Link></li>
+                    <li><Link to={"/admin/leave"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/leave" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "leave" ? null : "leave")}}><img src={leave} className='w-5 h-5' /><p>Leave</p></Link></li>
+                    <li><Link to={"/admin/attandance"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/attandance" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "attandance" ? null : "attandance")}}><img src='/images/clarity--employee-line.svg' className='w-5 h-5' /><p>Attandance</p></Link></li>
+                    <li><Link to={"/admin/messaging"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/messaging" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "messaging" ? null : "messaging")}}><img src={Messaging_icon} className='w-5 h-5' /><p>Messaging</p></Link></li>
+                    <li><Link to={"/admin/announcement"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/announcement" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "announcement" ? null : "announcement")}}><img src={announcement} className='w-5 h-5' /><p>Announcement</p></Link></li>
+                    
+                    <li><Link to={"/admin/manageusers"}className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${(pathname=="/admin/manageusers" || pathname=="/admin/manageusers" || pathname=="/admin/manageleaves") && "bg-gray-400 hover:bg-gray-400"  } `} onClick={()=>{setOpenSubmenu(openSubmenu === "manage" ? null : "manage");MobSidebarTogglerFunc();}}><img src="/images/clarity--employee-group-line.svg" className='w-5 h-5' /><p>Manage</p></Link></li>
+                    {openSubmenu === "manage" && (
+                        <ul>
+                            <li><Link to={"/admin/manageusers"} className={`flex gap-2 items-center p-2 mt-1 text-sm pl-5 hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/manageusers" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src="/images/clarity--employee-group-line.svg" className='w-4 h-4' /><p>Manage Users</p></Link></li>
+                            <li><Link to={"/admin/manageleaves"} className={`flex gap-2 items-center p-2 mb-1 text-sm pl-5 hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/manageleaves" && "bg-gray-400 hover:bg-gray-400"  } `} onClick={MobSidebarTogglerFunc}><img src="/images/clarity--employee-group-line.svg" className='w-4 h-4' /><p>Manage Leaves</p></Link></li>
+                        </ul>
+                    )}
+                    <li><Link to={"/admin/profile"} className={`flex gap-2 items-center p-2  hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/profile" && "bg-gray-400 hover:bg-gray-400"  }`} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "profile" ? null : "profile")}}><img src={profile} className='w-5 h-5' /><p>Profile</p></Link></li>
+                    <li><Link to={"/admin/settings"} className={`flex gap-2 items-center p-2 hover:bg-gray-200 ease-in duration-300 rounded ${pathname=="/admin/settings" && "bg-gray-400 hover:bg-gray-400"  }`} onClick={()=>{MobSidebarTogglerFunc();setOpenSubmenu(openSubmenu === "settings" ? null : "settings")}}><img src={setting} className='w-5 h-5' /><p>Settings</p></Link></li>
                 </ul>
             </div>
 

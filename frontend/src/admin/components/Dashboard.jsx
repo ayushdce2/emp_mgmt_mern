@@ -22,7 +22,7 @@ const Dashboard = () => {
         
       </div>
 
-      <div className='mb-5'></div>
+      <div className='mb-2 md:mb-5'></div>
 <div className=' flex flex-col md:flex-row gap-2 justify-around'>
       <div className='bg-white rounded-lg w-full md:w-[30rem]'>
           <div className='bg-gray-700 flex items-center p-3 gap-2 rounded-t-lg'>

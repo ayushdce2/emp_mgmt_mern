@@ -4,6 +4,7 @@ import Dashboard from './components/Dashboard.jsx';
 import Sidebar from "./components/Sidebar.jsx";
 import Profile from "./components/Profile.jsx";
 import ManageUsers from './components/ManageUsers.jsx';
+import ManageLeaves from "./components/ManageLeaves.jsx"
 import Settings from "./components/Settings.jsx";
 import Attandance from "./components/Attandance.jsx";
 import Leave from "./components/Leave.jsx";
@@ -104,6 +105,9 @@ if(loginAgain) return (<div className=' h-screen bg-gray-300 border-r-gray-950 p
                             <Route path={"/leave"} element={<Leave/>}></Route>
                             <Route path={"/messaging"} element={<Messaging/>}></Route>
                             <Route path={"/announcement"} element={<Announcement/>}></Route>
+                            <Route path={"/manageleaves"} element={<ManageLeaves />}></Route>
+
+                            
 
 
                             

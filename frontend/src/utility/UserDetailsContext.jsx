@@ -1,6 +1,7 @@
 import React,{createContext, useContext, useEffect, useState} from 'react';
 import API from "./axios.jsx";
 import { useNavigate } from 'react-router-dom';
+import { handleSuccess, handleError } from './ToastCustom.jsx';
 
 const UserDetailsContext = createContext();
 
@@ -46,6 +47,8 @@ const UserDetailsProvider  = ({children}) => {
     localStorage.removeItem("loggedinuser");
     localStorage.removeItem("token");
     localStorage.removeItem("userRole");
+
+    error.status=="403" && handleError(error.response.message)
   }
   }
   useEffect(()=>{

@@ -8,11 +8,11 @@ const Login = () => {
 
   const {latency,loadingserver} = PingServer();
   const {loginFormData,loginSubmit} = useLogin();
-    console.log(loadingserver,"loadingserver");
+    // console.log(loadingserver,"loadingserver");
 if(loadingserver){
   return "Wait Server is loading. . . . ."
 }
-console.log(latency,"latency");
+// console.log(latency,"latency");
   return (
     <>
         

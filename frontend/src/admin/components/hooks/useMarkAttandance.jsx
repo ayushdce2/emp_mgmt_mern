@@ -106,7 +106,7 @@ const useMarkAttandance = () => {
     }
 
     const getRecentAttandanceonRefresh = async () => {
-        console.log("hi")
+        // console.log("hi")
         try {
             // console.log(recordId,"<========recordId");
             const Response = await API.get("/user/getattandancedetails", headers);
@@ -114,7 +114,7 @@ const useMarkAttandance = () => {
             if(data.AllAttandanceDetails[0]==undefined) return;
             setAttandanceSummaryData(data.AllAttandanceDetails);
             setLoading(false);
-            console.log(data.AllAttandanceDetails.length,"data.AllAttandanceDetails");
+            // console.log(data.AllAttandanceDetails.length,"data.AllAttandanceDetails");
             const getPunchInValue = data.AllAttandanceDetails[0].punchInValue;
             const getPunchOutValue = data.AllAttandanceDetails[0].punchOutValue;
             const id = data.AllAttandanceDetails[0]._id;

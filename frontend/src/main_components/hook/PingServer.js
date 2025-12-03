@@ -22,7 +22,7 @@ const Pinging =async (url)=>{
     // and estimate latency. The 'response.ok' property might not be accurate
     // with 'no-cors', but the fact that the fetch promise resolved indicates
     // the server responded.
-    console.log(`Successfully "pinged" ${url}. Latency: ${latencyCheck.toFixed(2)} ms`);
+    // console.log(`Successfully "pinged" ${url}. Latency: ${latencyCheck.toFixed(2)} ms`);
     return { success: true, latency: latencyCheck };
 
   } catch (error) {

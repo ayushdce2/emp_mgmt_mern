@@ -17,7 +17,7 @@ const ManageUsers = () => {
                 <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>Manage Users</p>
             </div>
 
-            <div className='mt-3 grid grid-cols-4 gap-3 '>
+            <div className='mt-3 grid grid-cols-1 md:grid-cols-4 gap-3 '>
                 {
                     UsersList.map((data, index) => {
                         return (<>

@@ -1,5 +1,6 @@
 const UserModel = require("../models/User.js");
 const AttandanceModel = require("../models/Attandance.js");
+const LeaveModel = require("../models/Leave.js")
 const bcrypt = require("bcrypt");
 
 const ProfileFunction = async (req, res) => {
@@ -129,4 +130,56 @@ try {
     }
 }
 
-module.exports = {ProfileFunction, UpdatePersonalDetails, UpdatePassword, PunchInFunction, PunchOutFunction, getattandancedetails};
+const applyleavefunction = async (req,res)=>{
+try {
+        console.log(req.body,"req.body");
+        const {email} = req.user;
+        const {leave_type,date_from,date_to,leave_reason} = req.body;
+
+        const from = new Date(date_from);
+const today = new Date();
+from.setHours(0, 0, 0, 0);
+today.setHours(0, 0, 0, 0);
+
+if (from < today) {
+    return res.status(422).json({ message: "from date is not valid, beyond today" });
+}
+
+        if(date_from > date_to){
+            return res.status(422).json({ message: "date_to is beyond date_from" });
+        }
+
+        
+const existingLeave = await LeaveModel.findOne({ email, date_from, date_to });
+
+if (existingLeave) {
+    return res.status(409).json({message: "A leave with the same date range already exists"});
+}
+
+                const sendleaveApplyData = new LeaveModel({  email,leave_type,date_from,date_to,leave_reason });
+       
+        const leaveApplyData = await sendleaveApplyData.save();
+
+        res.status(201).json({ success: true, message: "Leave Applied",leaveApplyData });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error', success: false });
+    }
+}
+const getLeaveSummary = async (req,res)=>{
+try {
+        // console.log(req.body,"req.body");
+        const { email } = req.user;
+        // const { punchInValue, } = req.body;
+        // const punchInValue = new Date(Date.now());
+        
+        const AllLeaveDetails = await LeaveModel.find({ email }).sort({_id:-1});
+        console.log(AllLeaveDetails,"AllLeaveDetails")
+       
+        res.status(201).json({ success: true, message: "all leave details ",AllLeaveDetails });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error', success: false });
+    }
+}
+module.exports = {getLeaveSummary, applyleavefunction, ProfileFunction, UpdatePersonalDetails, UpdatePassword, PunchInFunction, PunchOutFunction, getattandancedetails};

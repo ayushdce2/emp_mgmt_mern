@@ -5,13 +5,13 @@ import useMarkAttandance from "../components/hooks/useMarkAttandance.jsx";
 const Attandance = () => {
   const {AttandanceSummarydata, Loading,refetch} = useMarkAttandance();
   
-  console.log(AttandanceSummarydata,"Attandance.jsx");
+  // console.log(AttandanceSummarydata,"Attandance.jsx");
   return (
     <>
        <div className=''>
         <p className='font-[heading2] text-xl bg-gray-400 p-2 rounded text-shadow-sm'>Attandance</p>
       </div>
-      <div className='mt-5 w-[60%] bg-gray-300 rounded p-3'>
+      <div className='mt-5 md:w-[60%] bg-gray-300 rounded md:p-3'>
           <MarkAttandance refetch={refetch}/>
         </div>
       <div className='mt-10'>
@@ -19,8 +19,8 @@ const Attandance = () => {
 
         </div>
         
-        <div className='mt-5'>
-          <table className=''>
+        <div className='mt-5 overflow-auto'>
+          <table className='text-nowrap'>
             <thead className='border-y-1 border-y-gray-500 text-gray-500'>
               <tr>
                 <th className='w-[4rem] p-2'>S.No.</th>
