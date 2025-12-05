@@ -36,7 +36,7 @@ const Pinging =async (url)=>{
   }
 useEffect(()=>{
     
-Pinging('https://emp-mgmt-mern.onrender.com/api/');
+Pinging(import.meta.env.VITE_API_URL);
 
 },[])
 

@@ -10,6 +10,8 @@ if(loading){
   return "Loading"
 }
 
+// console.log(leaveSummary[0],"leaveSummary")
+
 
   
   return (
@@ -67,7 +69,7 @@ if(loading){
             <p className=' font-[heading2] tracking-wide text-gray-800'>Casual Leave</p>
           </div>
           <div className='p-2 text-gray-600'>
-            10 Days Used
+            {leaveSummary[0] ? leaveSummary[0]?.total_casual_leaves : 3}/3 Days Available
           </div>
         </div>
 
@@ -76,7 +78,7 @@ if(loading){
             <p className=' font-[heading2] tracking-wide text-gray-800'>Sick Leave</p>
           </div>
           <div className='p-2 text-gray-600'>
-            10 Days Used
+            {leaveSummary[0] ? leaveSummary[0]?.total_sick_leaves : 3}/3 Days Available
           </div>
         </div>
 
@@ -85,7 +87,7 @@ if(loading){
             <p className=' font-[heading2] tracking-wide text-gray-800'>Absentee</p>
           </div>
           <div className='p-2 text-gray-600'>
-            10 Days Used
+            {leaveSummary[0] ? leaveSummary[0]?.total_absent : 0} Days 
           </div>
         </div>
 
@@ -94,7 +96,7 @@ if(loading){
             <p className=' font-[heading2] tracking-wide text-gray-800'>Work From Home</p>
           </div>
           <div className='p-2 text-gray-600'>
-            10 Days Used
+            {leaveSummary[0] ? leaveSummary[0]?.total_workfromhome_leaves : 3}/3 Days Available
           </div>
         </div>
 
@@ -120,6 +122,7 @@ if(loading){
                           <th className='w-[10rem] p-2'>Date From</th>
                           <th className='w-[10rem] p-2'>Date To</th>
                           <th className='w-[10rem] p-2'>Applied On</th>
+                          <th className='w-[10rem] p-2'>Total Leave Days</th>
                           <th className='w-[10rem] p-2'>Status</th>
                           <th className='p-2'>Reason</th>
                         </tr>
@@ -128,17 +131,18 @@ if(loading){
                         {
                           leaveSummary ? (leaveSummary?.map((data,index)=>{
                             return(
-                            <tr>
+                            <tr key={data._id}>
                           <td className='p-1'>{index+1}</td>
                           <td className='p-1'>{ data.leave_type}</td>
                           <td className='p-1'>{ new Date(data.date_from).toLocaleString("en-US", { dateStyle: "medium" })}</td>
                           <td className='p-1'>{ new Date(data.date_to).toLocaleString("en-US", { dateStyle: "medium"})}</td>
                           <td className='p-1'>{ new Date(data.createdAt).toLocaleString("en-US", { dateStyle: "medium" })}</td>
-                          <td className='p-1'>Waiting</td>
+                          <td className='p-1'>{ data.total_leave_days}</td>
+                          <td className={`p-1 font-bold ${(data.leave_status=="approve") ? "text-green-700" : (data.leave_status=="waiting")? "text-yellow-600" : "text-red-700"}`}>{(data.leave_status).charAt(0).toUpperCase() + (data.leave_status).slice(1)}</td>
                           <td className='p-1'>{data.leave_reason}</td>
                         </tr>
                             )
-                          })) : "No Data Found"
+                          })) : (<tr><td>No Data Found</td></tr>)
                         }
                         
                        

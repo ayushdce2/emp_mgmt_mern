@@ -21,6 +21,29 @@ const LeaveSchema = new Schema({
   leave_reason: {
     type: String,
     default: null,
+  },
+  leave_status: {
+    type: String,
+    default: "waiting",
+  },
+  total_sick_leaves:{
+    type:String,
+    default:0
+  },
+  total_casual_leaves:{
+    type:String,
+    default:0
+  },
+  total_workfromhome_leaves:{
+    type:String,
+    default:0
+  },
+  total_absent:{
+    type:String,
+    default:0
+  },
+  total_leave_days:{
+    type:String
   }
 },{
     timestamps:true

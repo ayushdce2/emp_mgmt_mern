@@ -1,4 +1,5 @@
 const UserModel = require("../models/User.js");
+const LeaveModel = require("../models/Leave.js");
 
 const UserListFunction = async (req,res)=>{
     // console.log(req.user,"userlistfunction");
@@ -42,5 +43,38 @@ const UpdateUserData = async (req,res)=>{
     }
 }
 
+const Getallusersleave = async (req,res)=>{
+try {
+        // console.log(req.body,"req.body");
+        // const { email } = req.user;
+        // const { punchInValue, } = req.body;
+        // const punchInValue = new Date(Date.now());
+        
+        const AllUsersLeaveDetails = await LeaveModel.find().sort({_id:-1});
+        // console.log(AllLeaveDetails,"AllLeaveDetails")
+       
+        res.status(201).json({ success: true, message: "all users leave details ",AllUsersLeaveDetails });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal Server Error', success: false });
+    }
+}
 
-module.exports = {UpdateUserData, UserToUpdateData, UserListFunction};
+const ManageLeaveFunc = async (req,res)=>{
+
+        console.log(req.body,"req.body == req.user",req.user);
+        const {UserLeaveStatus, id} = req.body;
+        // const {email} = req.user;
+
+    
+
+    try{
+        const UpdateUserLeaveData = await LeaveModel.findByIdAndUpdate(id,{leave_status:UserLeaveStatus},{new:true});
+// console.log(UpdateUserData,"UpdateUserData")
+        res.status(200).json({message:"Update Success",UpdateUserLeaveData})
+    }catch(error){
+        console.log(error);
+        res.status(500).json({message:"Update Failed",error})
+    }
+}
+module.exports = {UpdateUserData, UserToUpdateData, UserListFunction, Getallusersleave, ManageLeaveFunc};

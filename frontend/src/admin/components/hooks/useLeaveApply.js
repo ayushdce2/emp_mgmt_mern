@@ -5,6 +5,11 @@ import { handleSuccess, handleError } from '../../../utility/ToastCustom.jsx';
 const useLeaveApply = ({refetch}) => {
     const finalRefetch = refetch ? refetch : (() => {});
     const [formData,setFormData]=useState(null);
+    // const [limit,setLimit] =useState({
+    //     casual_leaves_limit:"",
+    //     sick_leaves_limit:"",
+    //     workfromhome_leaves_limit:""
+    // })
 
     const fetchFormData = (e)=>{
         setFormData(prev=>{
@@ -40,13 +45,19 @@ SendFormData();
                 const data = response.data;
                 handleSuccess(data.message);
                 await finalRefetch();
+                // setLimit({
+                //         casual_leaves_limit:data.casual_leaves_limit,
+                //         sick_leaves_limit:data.sick_leaves_limit,
+                //         workfromhome_leaves_limit:data.workfromhome_leaves_limit
+                // })
 
    
                 console.log(response,"response");
             } catch (error) {
                 console.log(error, "error", error.status);
                 // error.status=="500" && handleError(error.response.data.error.codeName)
-                error.status=="400" && handleError(error.response.data.error.details[0].message);
+                error.status=="400" && handleError(error.response.data.message);
+                error.status=="403" && handleError(error.response.data.error.details[0].message);
                 error.status=="422" && handleError(error.response.data.message);
                 error.status=="409" && handleError(error.response.data.message)
             }

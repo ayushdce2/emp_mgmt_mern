@@ -3,18 +3,33 @@ import LeaveChart from "./LeaveChart.jsx";
 import phone_icon from "../assets/line-md--phone.svg";
 import message_icon from "../assets/tabler--message.svg";
 import chat_icon from "../assets/mdi--chat-outline.svg";
-
+import useLeaveSummary from "./hooks/useLeaveSummary.js"
 import MarkAttandance from './MarkAttandance.jsx';
 import {useUserDetails} from "../../utility/UserDetailsContext.jsx"; 
 
 
 const Dashboard = () => {
   const { userProfileDetails, Loading, error } = useUserDetails();
+  const {leaveSummary, loading,refetch} = useLeaveSummary();
        
     if (error) return <p>Error loading profile</p>;
-    if(Loading){
+    if(Loading || loading){
         return (<div className=' h-screen bg-gray-300 border-r-gray-950 p-3 flex flex-col gap-5 items-center justify-center'><img src="./images/loading.gif" className='w-[5rem]' /> <p className='font-bold text-2xl'>Loading</p></div>)
     }
+    // console.log(leaveSummary,"leaveSummary");
+    const ApprovedData = leaveSummary?.filter((data,index) => {
+                return data.leave_status == "approve"
+                });
+    const ApprovedData_Count = ApprovedData?.reduce(
+      (sum,item)=> sum + Number(item.total_leave_days) ,0
+  );
+  const RejectedData = leaveSummary?.filter((data,index) => {
+                return data.leave_status == "reject"
+                });
+const RejectedData_Count = RejectedData?.reduce(
+      (sum,item)=> sum + Number(item.total_leave_days) ,0
+  );
+                // console.log(ApprovedData,"<===ApprovedData", ApprovedData_Count)
   return (
     <>
       <div className=''>
@@ -72,7 +87,7 @@ const Dashboard = () => {
         </div>
         <div className='mb-3'></div>
       
-      <div className='grid grid-cols-[1fr_2fr] gap-5'>
+      <div className='grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-5'>
 
         <div className='bg-white rounded-lg'>
           <div className='p-3 border-b-2 border-gray-300'>
@@ -80,34 +95,35 @@ const Dashboard = () => {
           </div>
           <div className='flex justify-around p-3'>
             <div className='w-[30%]'>
-              <p className='text-gray-500'>Total Leaves</p>
-              <p className='font-bold'>24</p>
+              <p className='text-gray-500'>Leaves Allowed</p>
+              <p className='font-bold'>9 Days</p>
             </div>
             <div className='w-[50%]'>
               <p className='text-gray-500'>Leaves Taken</p>
-              <p className='font-bold'>10</p>
+              <p className='font-bold'>{leaveSummary ? leaveSummary?.length : 0} times</p>
             </div>
 
           </div>
           <div className='flex  justify-around p-3'>
             <div className='w-[30%]'>
               <p className='text-gray-500'>Absent</p>
-              <p className='font-bold'>24</p>
+              <p className='font-bold'>{leaveSummary.length > 0 ? leaveSummary[0]?.total_absent : "0"} Days</p>
             </div>
             <div className='w-[50%]'>
-              <p className='text-gray-500'>Request Pending</p>
-              <p className='font-bold'>10</p>
+              <p className='text-gray-500'>Approved Leaves</p>
+              <p className='font-bold'>{ ApprovedData_Count + " Days" }</p>
             </div>
+            
 
           </div>
           <div className='flex  justify-around p-3'>
             <div className='w-[30%]'>
-              <p className='text-gray-500'>Working Days</p>
-              <p className='font-bold'>24</p>
+              <p className='text-gray-500'>Rejected Leaves</p>
+              <p className='font-bold'>{RejectedData_Count + " Days"}</p>
             </div>
             <div className='w-[50%]'>
-              <p className='text-gray-500'>Days of Deduction</p>
-              <p className='font-bold'>10</p>
+              <p className='text-gray-500'>Total Deduction</p>
+              <p className='font-bold'>{leaveSummary?.length > 0 ? (Number(leaveSummary[0]?.total_absent) + RejectedData_Count) : "0" } Days</p>
             </div>
 
           </div>
@@ -115,7 +131,7 @@ const Dashboard = () => {
 
         <div className='bg-white rounded-xl'>
           {/* chart */}
-          <LeaveChart/>
+          <LeaveChart leaveSummary={leaveSummary}/>
         </div>
 
         
