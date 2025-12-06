@@ -8,9 +8,9 @@ const useMobToggleSidebar = () => {
       setMobSidebar(prev=>!prev)
         }
 
-    useEffect(() => {
-    console.log("Updated mobSidebar:", mobSidebar); // always new value
-  }, [mobSidebar]);
+  //   useEffect(() => {
+  //   console.log("Updated mobSidebar:", mobSidebar); 
+  // }, [mobSidebar]);
 
   return {mobSidebar,MobSidebarTogglerFunc }
 }

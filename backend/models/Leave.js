@@ -6,6 +6,10 @@ const LeaveSchema = new Schema({
     type: String,
     required: true,
   },
+  userRole:{
+        type:String,
+        required:true,
+    },
   leave_type:{
     type: String,
     required: true

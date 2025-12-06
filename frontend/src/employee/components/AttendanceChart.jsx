@@ -1,11 +1,14 @@
 import React from 'react';
 import { Gauge, gaugeClasses } from '@mui/x-charts/Gauge';
 
-const AttendanceChart = () => {
-    const settings = {
+const AttendanceChart = ({totalWorkingHours}) => {
+  
+const HourseWorked = totalWorkingHours.split("hr")[0];
+  const settings = {
   width: 200,
   height: 200,
-  value: 60,
+  value: (HourseWorked/8)*100,
+  
 };
   return (
     <Gauge
@@ -22,7 +25,7 @@ const AttendanceChart = () => {
           fill: theme.palette.text.disabled,
         },
       })}
-      text={"Working Hours"}
+      text={"Worked for \n "+totalWorkingHours}
     />
   )
 }

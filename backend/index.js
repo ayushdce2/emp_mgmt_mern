@@ -38,6 +38,8 @@ const UserRouter = require("./routes/UserRouter.js");
 app.use("/api/user",UserRouter);
 const AdminRouter = require("./routes/AdminRouter.js");
 app.use("/api/admin",AdminRouter);
+const HrRouter = require("./routes/HrRouter.js");
+app.use("/api/hr",HrRouter);
 
 app.get("/api/",(req,res)=>{
     console.log("hi");

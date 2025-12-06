@@ -23,7 +23,7 @@ const headers = {
         try {
             
 
-            const response = await API.get(`/admin/updateuser`, headers);
+            const response = await API.get(`/hr/updateuser`, headers);
             const data = response.data[0];
             console.log(data);
             setfetchUserData(data);
@@ -66,11 +66,11 @@ const headers = {
     const updateUserData = async (e)=>{
         e.preventDefault();
         try{
-            const response = await API.put("/admin/updateuser",fetchUserData,headers);
+            const response = await API.put("/hr/updateuser",fetchUserData,headers);
             const data = response.data;
             handleSuccess(data.message)
             setTimeout(() => {
-                navigate("/admin/manageusers");
+                navigate("/hr/manageusers");
             }, 1000);
             
             // console.log(response,"response");

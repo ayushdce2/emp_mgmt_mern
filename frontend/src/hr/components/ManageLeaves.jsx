@@ -6,6 +6,7 @@ const ManageLeaves = () => {
     if(loading){
   return "Loading"
 }
+console.log(allLeaveData,"<===allLeaveData")
   return (
     <>
         <div>
@@ -20,7 +21,7 @@ const ManageLeaves = () => {
                         <table className='text-nowrap'>
                       <thead className='border-y-1 border-y-gray-500 text-gray-500'>
                         <tr>
-                          <th className='p-2'>S.No.</th>
+                          <th className=' p-2'>S.No.</th>
                           <th className='w-[4rem] p-2'>Role</th>
                           <th className='w-[10rem] p-2'>Email</th>
                           <th className='w-[6rem] p-2'>Leave Type</th>
@@ -34,7 +35,7 @@ const ManageLeaves = () => {
                       </thead>
                       <tbody className='text-center text-gray-700'>
                         {
-                          allLeaveData ? (allLeaveData?.map((data,index)=>{
+                          (allLeaveData?.length != 0) ? (allLeaveData?.map((data,index)=>{
                             return(
                             <tr key={data._id}>
                           <td className='p-1'>{index+1}</td>
@@ -61,7 +62,7 @@ const ManageLeaves = () => {
                           <td className='p-1'>{data.leave_reason}</td>
                         </tr>
                             )
-                          })) : (<tr><td>No Data Found</td></tr>)
+                          })) : (<tr><td colSpan={10} className='p-3'>No Data Found</td></tr>)
                         }
                         
                        

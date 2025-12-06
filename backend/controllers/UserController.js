@@ -132,12 +132,14 @@ try {
 
 const applyleavefunction = async (req,res)=>{
 try {
-        // console.log(req.body,"req.body");
+        // console.log(req.body,"req.body",req.user);
 
         const {email} = req.user;
         let {leave_type, date_from, date_to, leave_reason} = req.body;
         let leave_status = "Waiting";
-
+// console.log(userRole,"<=========userRole")
+const UserData = await UserModel.findOne({email});
+const userRole = UserData.userRole;
         //limit setup
         const sick_leaves_limit = 3;
         const casual_leaves_limit = 3;
@@ -310,7 +312,7 @@ if(leave_type=="workfromhome"){
 
 
 
-                const sendleaveApplyData = new LeaveModel({  email,leave_type,date_from,date_to,leave_reason,leave_status, total_sick_leaves,total_casual_leaves,total_workfromhome_leaves,total_absent,total_leave_days });
+                const sendleaveApplyData = new LeaveModel({  email,userRole,leave_type,date_from,date_to,leave_reason,leave_status, total_sick_leaves,total_casual_leaves,total_workfromhome_leaves,total_absent,total_leave_days });
        
         const leaveApplyData = await sendleaveApplyData.save();
 
