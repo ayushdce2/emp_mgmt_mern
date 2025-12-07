@@ -9,7 +9,7 @@ const ProfileUpdateModal = (props)=>{
     return(
         <>
             <div className="absolute z-1 top-0 right-0 left-0 bottom-0  flex items-center justify-center " onClick={CloseModal}>
-                <div className=" p-3 w-[50%] h-[70%] rounded bg-white" onClick={(event)=>{event.stopPropagation()}}>
+                <div className=" p-3 md:w-[50%] h-[70%] rounded bg-white" onClick={(event)=>{event.stopPropagation()}}>
                     
                     <div className='flex bg-gray-400 p-2 rounded'>
         <p className='font-[heading2] text-xl   text-shadow-sm'>Update Personal Details</p>
@@ -18,26 +18,26 @@ const ProfileUpdateModal = (props)=>{
                     </div>
       </div>
                     <div className="flex items-center justify-center h-[90%]">
-                        <form onSubmit={UpdatePersonalDetailsModalFunction} className="flex flex-col gap-2 w-[50%]">
+                        <form onSubmit={UpdatePersonalDetailsModalFunction} className="flex flex-col gap-2 md:w-[50%]">
                             <div className="flex items-center mb-2">
                             <p className="w-[4rem]">Name : </p>
-                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0" value={name} name="name" onChange={FillFormData}/>
+                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0 grow-1" value={name} name="name" onChange={FillFormData}/>
                             </div>
                             <div className="flex items-center mb-2">
                             <p className="w-[4rem]">Email : </p>
-                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0" value={email} name="email" onChange={FillFormData}/>
+                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0  grow-1" value={email} name="email" onChange={FillFormData}/>
                             </div>
                             <div className="flex items-center mb-2">
                             <p className="w-[6rem]">Phone No. : </p>
-                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0" value={phoneno} name="phoneno" onChange={FillFormData}/>
+                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0  grow-1" value={phoneno} name="phoneno" onChange={FillFormData}/>
                             </div>
                             <div className="flex items-center mb-2">
                             <p className="w-[6rem]">Job Profile : </p>
-                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0" value={jobprofile} name="jobprofile" onChange={FillFormData}/>
+                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0 grow-1" value={jobprofile} name="jobprofile" onChange={FillFormData}/>
                             </div>
                             <div className="flex items-center mb-7">
                             <p className="w-[8rem]">Office Location : </p>
-                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0" value={officelocation} name="officelocation" onChange={FillFormData}/>
+                            <input type="text" className="p-1 border-b-1 border-b-gray-500 text-gray-500 focus:outline-0 grow-1" value={officelocation} name="officelocation" onChange={FillFormData}/>
                             </div>
                             {/* <div className="flex items-center mb-4">
                             <p className="w-[4rem]">Role : </p>    

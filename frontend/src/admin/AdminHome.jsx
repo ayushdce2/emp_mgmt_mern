@@ -53,7 +53,7 @@ if(loginAgain) return (<div className=' h-screen bg-gray-300 border-r-gray-950 p
 
                             </div>
                             <div className='md:hidden font-(family-name:--heading1)  text-2xl font-bold'>
-                                <p>Hi, {userProfileDetails[0].name}</p>
+                                <p>Hi, <span className='text-sm'>{userProfileDetails[0].name}</span></p>
 
                             </div>
                             <Link to={"/admin/announcement"} className=' hidden w-6 h-6 md:flex items-center justify-center  overflow-hidden'>
@@ -79,7 +79,7 @@ if(loginAgain) return (<div className=' h-screen bg-gray-300 border-r-gray-950 p
                             </div> */}
 
                             <div>
-                                <p className='bg-gray-200 p-1 px-2 font-[heading2] rounded'>Admin</p>
+                                <p className='bg-gray-200 p-1 px-2 font-[heading2] rounded hidden md:inline-block'>Admin</p>
                             </div>
 
                             <div >

@@ -24,9 +24,9 @@ const Attandance = () => {
             <thead className='border-y-1 border-y-gray-500 text-gray-500'>
               <tr>
                 <th className='w-[4rem] p-2'>S.No.</th>
-                <th className='w-[14rem] '>Punch In</th>
-                <th className='w-[14rem] '>Punch Out</th>
-                <th className='w-[11rem] '>Duration</th>                             
+                <th className='w-[14rem] p-2'>Punch In</th>
+                <th className='w-[14rem] p-2'>Punch Out</th>
+                <th className='w-[11rem] p-2'>Duration</th>                             
               </tr>
             </thead>
             <tbody className='text-center text-gray-700'>
@@ -37,9 +37,9 @@ const Attandance = () => {
               
                       <tr key={data._id}>
                 <td className='p-1'>{index+1}</td>
-                <td>{data.punchInValue && new Date(data.punchInValue).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })} </td>
-                <td>{data.punchOutValue && new Date(data.punchOutValue).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })} </td>
-                <td>{data.Workinghours && data.Workinghours} Hr & {data.Workingminutes && data.Workingminutes} mins</td>
+                <td className='p-1'>{data.punchInValue && new Date(data.punchInValue).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })} </td>
+                <td className='p-1'>{data.punchOutValue && new Date(data.punchOutValue).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })} </td>
+                <td className='p-1'>{data.Workinghours && data.Workinghours} Hr & {data.Workingminutes && data.Workingminutes} mins</td>
               </tr>
              
                   ) 

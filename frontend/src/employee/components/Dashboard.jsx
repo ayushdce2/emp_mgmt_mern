@@ -94,7 +94,7 @@ const RejectedData_Count = RejectedData?.reduce(
             <p className='font-[heading2] text-lg'>Leave Report - 2025</p>
           </div>
           <div className='flex justify-around p-3'>
-            <div className='w-[30%]'>
+            <div className='md:w-[30%]'>
               <p className='text-gray-500'>Leaves Allowed</p>
               <p className='font-bold'>9 Days</p>
             </div>
@@ -117,7 +117,7 @@ const RejectedData_Count = RejectedData?.reduce(
 
           </div>
           <div className='flex  justify-around p-3'>
-            <div className='w-[30%]'>
+            <div className='md:w-[30%]'>
               <p className='text-gray-500'>Rejected Leaves</p>
               <p className='font-bold'>{RejectedData_Count + " Days"}</p>
             </div>

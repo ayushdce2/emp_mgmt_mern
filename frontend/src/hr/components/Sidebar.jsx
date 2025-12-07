@@ -27,7 +27,7 @@ const { userProfileDetails, Loading, error } = useUserDetails();
         <>
 
             <div className=' p-3 h-[3.56rem] relative'>
-                <p className='font-(family-name:--heading1)  text-2xl'>Hi, <span className='font-bold'>{userProfileDetails[0].name}</span><img src="/images/radix-icons--cross-2.svg" onClick={MobSidebarTogglerFunc} className='md:hidden absolute right-2 top-1 w-6 bg-gray-300 rounded' /> </p>
+                <p className='font-(family-name:--heading1)  text-2xl'>Hi, <span className='font-bold text-sm'>{userProfileDetails[0].name}</span><img src="/images/radix-icons--cross-2.svg" onClick={MobSidebarTogglerFunc} className='md:hidden absolute right-2 top-1 w-6 bg-gray-300 rounded' /> </p>
             </div>
             <div className=' h-[calc(100vh-3.56rem)]  border-r-gray-950 p-3'>
                 <ul className='font-[heading2] tracking-wide '>
